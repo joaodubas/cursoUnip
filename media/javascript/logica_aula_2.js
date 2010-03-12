@@ -66,7 +66,7 @@ function addClass(target, class_name) {
             target.className += ' ' + class_name;
         }
     }
-};
+}
 function removeClass(target, class_name) {
     var regexp_class = new RegExp('(^| )' + className + '( |$)');
     if (hasClass(target, class_name)) {
@@ -88,7 +88,7 @@ function controlCadastro(e) {
         doc = document,
         e = getEvent(e),
         btn_target = getTarget(e),
-        quadro_formulario, quadro_resposta;
+        quadro_formulario, quadro_resposta,
         btn_value = '', ipt_nome = '', ipt_idade = '',
         vl_idade = {}, nr_idade = 0,
         soma_idade = 0, total_aluno = 0, media_idade = 0;
@@ -113,14 +113,17 @@ function controlCadastro(e) {
         } else if (btn_value === 'media') {
             if (wdw._arr_idade.length > 0) {
                 addClass(quadro_formulario, 'hidden');
-                removeClass(quadro_formulario, 'hidden');
+                removeClass(quadro_resposta, 'hidden');
                 total_aluno = wdw._arr_idade.length;
                 for (var i = 0; i < total_aluno; i++) {
                     soma_idade += wdw._arr_idade[i];
                 }
                 media_idade = soma_idade / total_aluno;
             }
-        } else if (btn_value === '') {
+        } else if (btn_value === 'inserir') {
+            wdw._arr_idade = [];
+            addClass(quadro_resposta, 'hidden');
+            removeClass(quadro_resposta, 'hidden');
         }
         ipt_nome.value = ipt_idade.value = '';
         return false;
@@ -137,7 +140,9 @@ function setLog(obj_dado) {
  * Inicializa o aplicativo
  */
 function init() {
-    document.getElementById('formulario').onclick = controlCadastro;
+    document.getElementById('formulario').onclick = function (e) {
+        controlCadastro(e);
+    };
     document.getElementById('frm_aluno').onsubmit = function () {
         return false;
     };
