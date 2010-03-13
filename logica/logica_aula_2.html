@@ -13,23 +13,21 @@
         <div id='container'>
             <div id='principal'>
                 <div id='formulario' class='quadro'>
-                    <form action='' method='get' id='frm_aluno'>
-                        <fieldset id='grp_basico'>
-                            <legend>Dados do aluno</legend>
-                            <label for='ipt_nome'>
-                                <span class='rotulo'>Nome</span>
-                                <input type='text' maxlength='256' id='ipt_nome' name='ipt_nome' />
-                            </label>
-                            <label for='ipt_idade'>
-                                <span class='rotulo'>Idade (anos)</span>
-                                <input type='text' maxlength='256' id='ipt_idade' name='ipt_idade' />
-                            </label>
-                        </fieldset>
-                        <div id='opcao'>
-                            <button id='btn_inserir' class='botao' value='inserir'>Novo aluno</button>
-                            <button id='btn_classe' class='botao' value='media'>Dados turma</button>
-                        </div>
-                    </form>
+                    <fieldset id='grp_basico'>
+                        <legend>Dados do aluno</legend>
+                        <label for='ipt_nome'>
+                            <span class='rotulo'>Nome</span>
+                            <input type='text' maxlength='256' id='ipt_nome' name='ipt_nome' />
+                        </label>
+                        <label for='ipt_idade'>
+                            <span class='rotulo'>Idade (anos)</span>
+                            <input type='text' maxlength='256' id='ipt_idade' name='ipt_idade' />
+                        </label>
+                    </fieldset>
+                    <div id='opcao'>
+                        <button id='btn_inserir' class='botao' value='inserir'>Novo aluno</button>
+                        <button id='btn_classe' class='botao' value='media'>Dados turma</button>
+                    </div>
                 </div>
                 <div id='resposta' class='quadro hidden'>
                     <p id='resultado' class='hidden'>
