@@ -128,6 +128,7 @@ function controlCadastro(e) {
         btn_value = '', ipt_nome = '', ipt_idade = '',
         vl_idade = {}, nr_idade = 0,
         soma_idade = 0, total_aluno = 0, media_idade = 0,
+        span_idade, span_turma,
         log = {};
     if (btn_target.nodeName.toLowerCase() === 'button') {
         quadro_formulario = doc.getElementById('formulario');
@@ -151,6 +152,8 @@ function controlCadastro(e) {
             }
         } else if (btn_value === 'media') {
             if (wdw._arr_idade.length > 0) {
+                span_idade = doc.getElementById('x_idade');
+                span_turma = doc.getElementById('nr_aluno');
                 addClass(quadro_formulario, 'hidden');
                 removeClass(quadro_resposta, 'hidden');
                 total_aluno = wdw._arr_idade.length;
@@ -160,11 +163,17 @@ function controlCadastro(e) {
                 media_idade = soma_idade / total_aluno;
                 log = formatLog([media_idade, total_aluno]);
                 setLog(log);
+                span_idade.appendChild(doc.createTextNode(media_idade));
+                span_turma.appendChild(doc.createTextNode(total_aluno));
             }
-        } else if (btn_value === 'inserir') {
+        } else if (btn_value === 'turma') {
             wdw._arr_idade = [];
             addClass(quadro_resposta, 'hidden');
-            removeClass(quadro_resposta, 'hidden');
+            removeClass(quadro_formulario, 'hidden');
+            span_idade = doc.getElementById('x_idade');
+            span_turma = doc.getElementById('nr_aluno');
+            span_idade.innerHTML = '';
+            span_turma.innerHTML = '';
         }
         ipt_nome.value = ipt_idade.value = '';
         return false;
@@ -187,7 +196,7 @@ function setLog(obj_dado) {
     if (obj_dado.origem === 'aluno') {
         text_node = doc.createTextNode(obj_dado.nome + ' (' + obj_dado.idade + '): ' + obj_dado.numero_aluno);
     } else {
-        text_node = doc.createTextNode('Media: ' + obj_dado.media + '. Em turma de ' + obj_dado.numero_aluno + ' alunos');
+        text_node = doc.createTextNode('Media: ' + obj_dado.idade + '. Em turma de ' + obj_dado.numero_aluno + ' alunos');
     }
     list_node.appendChild(text_node);
     log_list.appendChild(list_node);
@@ -197,7 +206,7 @@ function setLog(obj_dado) {
  * Inicializa o aplicativo
  */
 function init() {
-    document.getElementById('formulario').onclick = function (e) {
+    document.getElementById('principal').onclick = function (e) {
         controlCadastro(e);
     };
     /*
