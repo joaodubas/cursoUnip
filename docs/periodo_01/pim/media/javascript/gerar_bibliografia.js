@@ -18,9 +18,39 @@ GeraLink.gerarCitacaoIndireta = function (objetoReferencia) {
     return GeraLink.gerarCitacao(objetoReferencia, GeraLink.CITACAO_INDIRETA);
 }
 
+GeraLink.gerarAutor = function (objetoReferencia) {
+    var autorTrabalho = '',
+        listAutor = [],
+        tipoAutor = 0;
+    // preparando autor
+    if (objetoReferencia.autor) {
+        tipoAutor = 1;
+        listAutor = objetoReferencia.autor;
+    } else if (objetoReferencia.organizacao) {
+        tipoAutor = 2;
+        listAutor = objetoReferencia.organizacao;
+    } else if (objetoReferencia.governo) {
+        tipoAutor = 3;
+        listAutor = objetoReferencia.governo;
+    }
+
+    if (listAutor.length > 3) {
+        autorTrabalho = listAutor[0].sobrenome.toUpperCase();
+        autorTrabalho += ', ' + listAutor[0].nome;
+        autorTrabalho += '; et al.';
+    } else {
+        for (autor in listAutor[0]) {
+            autorTrabalho += autor.sobrenome.toUpperCase();
+            autorTrabalho += ', ' + autor.nome;
+        }
+    }
+
+};
+
 GeraLink.gerarReferencia = function (objetoReferencia) {
     var autorTrabalho, autorPublicacao, tituloTrabalho, tituloPublicacao, publicacaoDetalhe,
         autorTrabalhoSpan, autorPublicacaoSpan, tituloTrabalhoSpan, tituloPublicacaoSpan, publicacaoDetalheSpan;
+
     switch (objetoReferencia['tipo']) {
         case Referencia.TIPO_ARTIGO:
             break;
