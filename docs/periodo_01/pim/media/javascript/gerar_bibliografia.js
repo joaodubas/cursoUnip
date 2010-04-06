@@ -34,15 +34,19 @@ GeraLink.gerarAutor = function (objetoReferencia) {
         listAutor = objetoReferencia.governo;
     }
 
-    if (listAutor.length > 3) {
-        autorTrabalho = listAutor[0].sobrenome.toUpperCase();
-        autorTrabalho += ', ' + listAutor[0].nome;
-        autorTrabalho += '; et al.';
-    } else {
-        for (autor in listAutor[0]) {
-            autorTrabalho += autor.sobrenome.toUpperCase();
-            autorTrabalho += ', ' + autor.nome;
+    switch (tipoAutor) {
+    case 1:
+        if (listAutor.length > 3) {
+            autorTrabalho = listAutor[0].sobrenome.toUpperCase();
+            autorTrabalho += ', ' + listAutor[0].nome;
+            autorTrabalho += '; et al.';
+        } else {
+            for (autor in listAutor[0]) {
+                autorTrabalho += autor.sobrenome.toUpperCase();
+                autorTrabalho += ', ' + autor.nome;
+            }
         }
+        break;
     }
 
 };
