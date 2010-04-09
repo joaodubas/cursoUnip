@@ -7,6 +7,7 @@ GeraLink.bibliografia = document.getElementById('bibliografia');
 GeraLink.listaLink = Referencia.bibliografia;
 
 GeraLink.gerarCitacao = function (objetoReferencia, tipo) {
+    //TO DO
     return false;
 };
 
@@ -21,7 +22,8 @@ GeraLink.gerarCitacaoIndireta = function (objetoReferencia) {
 GeraLink.gerarAutor = function (objetoReferencia) {
     var autorTrabalho = '',
         listAutor = [],
-        tipoAutor = 0;
+        tipoAutor = 0,
+        arAutor = [];
     // preparando autor
     if (objetoReferencia.autor) {
         tipoAutor = 1;
@@ -40,20 +42,50 @@ GeraLink.gerarAutor = function (objetoReferencia) {
             autorTrabalho = listAutor[0].sobrenome.toUpperCase();
             autorTrabalho += ', ' + listAutor[0].nome;
             autorTrabalho += '; et al.';
+            arAutor.push(autorTrabalho);
         } else {
-            for (autor in listAutor[0]) {
-                autorTrabalho += autor.sobrenome.toUpperCase();
+            for (autor in listAutor) {
+                autorTrabalho = autor.sobrenome.toUpperCase();
                 autorTrabalho += ', ' + autor.nome;
+                arAutor.push(autorTrabalho);
             }
         }
         break;
+    case 2:
+        for (autor in listaAutor) {
+            autorTrabalho += autor.nome.toUpperCase();
+            arAutor.push(autorTrabalho);
+        }
+        break;
+    case 3:
+        //TO DO
+        break;
     }
+    return arAutor.join('; ');
 
 };
 
+GeraLink.gerarImprenta = function (objetoReferencia) {
+    var imprenta, publicacao;
+    if (objetoReferencia['publicacao'] != null) {
+        publicacao = objetoReferencia['publicacao'];
+        imprenta = publicacao['local'];
+        imprenta += ': ' + publicacao['editora'];
+        imprenta += ', ' + publicacao['ano'];
+    }
+    return imprenta;
+};
+
+GeraLink.gerarDescricaoFisicao = function (objetoReferencia) {
+    //TO DO
+};
+
 GeraLink.gerarReferencia = function (objetoReferencia) {
-    var autorTrabalho, autorPublicacao, tituloTrabalho, tituloPublicacao, publicacaoDetalhe,
-        autorTrabalhoSpan, autorPublicacaoSpan, tituloTrabalhoSpan, tituloPublicacaoSpan, publicacaoDetalheSpan;
+    var autorTrabalho, autorPublicacao, tituloTrabalho, tituloPublicacao, imprenta, publicacaoDetalhe,
+        autorTrabalhoSpan, autorPublicacaoSpan, tituloTrabalhoSpan, tituloPublicacaoSpan, imprentaSpan, publicacaoDetalheSpan;
+
+    autorTrabalho = GeraLink.gerarAutor(objetoReferencia);
+    imprenta = GeraLink.gerarImprenta(objetoReferencia);
 
     switch (objetoReferencia['tipo']) {
         case Referencia.TIPO_ARTIGO:
