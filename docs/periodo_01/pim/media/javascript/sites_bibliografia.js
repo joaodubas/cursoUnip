@@ -1,7 +1,7 @@
 var Referencia = {};
 
 Referencia.TIPO_ARTIGO = 1;
-Referencia.TIPO_LIVRO = 2;
+Referencia.TIPO_LIVRO = 2; // rever padrao da abnt, possivel usar um tipo para mais tipos
 Referencia.TIPO_CONGRESSO = 3;
 Referencia.TIPO_ONLINE = 4;
 Referencia.TIPO_FOLHETO = 5;
@@ -58,7 +58,7 @@ Referencia.bibliografia = [
             'congresso': 'Congresso Brasileiro de Sistemas',
             'edicao': 4,
             'titulo': 'Anais 4º Congresso Brasileiro de Sistemas',
-            'cidade': 'Franca',
+            'local': 'Franca',
             'editora': 'Atlas',
             'ano': 2008,
             'pagina_inicial': 0,
@@ -216,7 +216,7 @@ Referencia.bibliografia = [
         'autor': [
             {'nome': 'André Covic', 'sobrenome': 'Barros'},
             {'nome': 'Jacques', 'sobrenome': 'Wainer'},
-            {'nome': 'Kleucio', 'sobbrenome': 'Claudio'},
+            {'nome': 'Kleucio', 'sobrenome': 'Claudio'},
             {'nome': 'Luiz Renato Ribeiro', 'sobrenome': 'Ferreira'},
             {'nome': 'Tom', 'sobrenome': 'Dwyer'}],
         'publicacao': {
