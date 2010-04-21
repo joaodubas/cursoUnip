@@ -3,5 +3,8 @@
 *.log
 *.swo
 ~*
+*.aux
+*.toc
+*.dvi
 docs/periodo_01/aulas
 docs/periodo_01/pim/bibliografia
