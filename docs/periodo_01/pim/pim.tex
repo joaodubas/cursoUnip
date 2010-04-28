@@ -1,14 +1,19 @@
-\documentclass[a4paper,10pt]{report}
+%\documentclass[a4paper,12pt]{abnt}
+\documentclass[a4paper,12pt]{report}
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 
 \begin{document}
 
-    \title{Projeto Integrado Multidisciplinar\\Primeiro Período}
     \author{Daniela Alvarenga   \\RA
         \and João Paulo Dubas   \\RA
         \and Juliana Viana      \\RA
         \and Robson \ldots      \\RA}
+    \title{Projeto Integrado Multidisciplinar\\Primeiro Período}
+    %\orientador{Prof. Msdo. Figueiredo}
+    %\instituicao{Universidade Paulista (UNIP)\par
+    %    Superior Tecnólogo em Análise e Desenvolvimento de Sistemas}
+    %\local{Santos}
     \date{Santos\\2010}
 
     \maketitle
@@ -16,35 +21,59 @@
     \tableofcontents
 
     \chapter{Introdução}
+    \label{ch:intro}
 
     \chapter[Educação versus Informática]{Relação entre Educação e Informática}
+    \label{ch:edu_x_info}
 
     \chapter{Modelos de Sucesso}
+    \label{ch:modelo_sucesso}
 
     \chapter[Laboratório]{Proposta do Laboratório de Informática}
+    \label{ch:laboratorio}
 
         \section{Introdução}
+        \label{sc:laboratorio_intro}
+        Neste capítulo iremos abordar o estudo de caso para emprego de um
+        laboratório de informática na escola de ensino médio
+        \begin{bfseries}Colégio de Faz de Contas\end{bfseries}.
 
-            Neste capítulo iremos abordar o estudo de caso para emprego de um
-            laboratório de informática na escola de ensino médio
-            \begin{bfseries}Colégio de Faz de Contas\end{bfseries}.
-
-            Após introdução dos elementos característicos da escola e das
-            necessidades do projeto, sera apresentada e discutida a solução
-            proposta, custo envolvido e, como tal proposta será empregada no
-            \begin{bfseries}Colégio Faz de Contas\end{bfseries}.
+        Após introdução dos elementos característicos da escola e das
+        necessidades do projeto, sera apresentada e discutida a solução
+        proposta, custo envolvido e, como tal proposta será empregada no
+        \begin{bfseries}Colégio Faz de Contas\end{bfseries}.
 
         \section{Estrutura \& Necessidades}
+        \label{sc:laboratorio_estrutura}
+        O Colégio Faz de Contas, situado à Rua do Sobe e Desce, sem
+        número, na Terra do Nunca; conta com uma instalação de
+        100m\begin{math}^{2}\end{math}, salas aclimatizadas e biblioteca.
 
             \subsection{Quantidade de alunos}
+            Atualmente o Colégio Faz de Contas, atende a cerca de 500
+            alunos, em todas as séries do Ensino Fundamental (1\textordfeminine
+            à 8\textordfeminine séries), nos períodos matutino e vespertino.
 
             \subsection{Estrutura de ensino}
+            Para permitir ao aluno um ensino integral\footnote{lembrar do
+            colégio onde ocorreu o treinamento de Python} o colégio
+            disponibiliza salas de estudo especiais e atividades extra
+            curriculares.
+
+            Além desta possibilidade, todos os professores prestam plantões
+            após o horário de aula e, constantemente, os diretores do colégio
+            promovem eventos para disseminação do conhecimento entre os
+            alunos.
 
             \subsection{Bibliotecas}
+            O Colégio Faz de Contas conta com uma sala de estudo reservada
+            para uso pelos professores, em atividades de ensino, bem como com
+            uma biblioteca para atender alunos e professores em suas pesquisas.
 
             \subsection{Salas de aula}
 
         \section{Propostas de ação}
+        \label{sc:laboratorio_proposta}
 
             \subsection{Proposta 1:}
 
@@ -52,4 +81,95 @@
 
             \subsection{Proposta 3:}
 
+    \appendix
+    \chapter{Requisitos do software}
+
+        \section{Propósito}
+        O software deverá seguir as seguintes orientações:
+
+        \begin{enumerate}
+            
+            \item Permitir cadastrar uma turma
+
+                \begin{itemize}
+                    
+                    \item Nome da turma
+
+                    \item Ciclo da turma
+
+                    \item Período da turma \{1: `matutino', 2: `vespertino', 3: `noturno'\}
+
+                \end{itemize}
+
+            \item Permitir cadastrar uma avaliação de uma turma
+
+                \begin{itemize}
+                    
+                    \item Quantidade de alunos na turma
+
+                \end{itemize}
+
+            \item Permitir cadastrar diversas avaliações de alunos
+
+                \begin{itemize}
+                    
+                    \item Quantidade de avaliações do aluno
+
+                \end{itemize}
+            
+            \item A respeito do aluno serão cadastradas
+
+                \begin{itemize}
+
+                    \item Nome do aluno
+
+                    \item Gênero do aluno \{1: `masculino', 2: `feminino'\}
+
+                    \item Data de nascimento
+
+                \end{itemize}
+
+            \item A respeito da avaliação serão cadastradas
+
+                \begin{itemize}
+
+                    \item Data da avaliação
+
+                    \item Massa corporal (kg)
+
+                    \item Estatura (cm)
+
+                    \item Circunferência da cintura (cm)
+
+                    \item Circunferência do quadril (cm)
+
+                \end{itemize}
+
+        \end{enumerate}
+        
+        Ao professor será emitido um laudo com:
+
+        \begin{itemize}
+
+            \item Idade de cada aluno (em anos e em meses)
+
+            \item Índice de massa corporal (IMC) de cada aluno
+
+            \item Classificação em percentil do IMC pela idade
+
+            \item Relação cintura/quadril (RCQ) de cada aluno
+
+            \item Índice de conicidade (IC) de cada aluno
+
+            \item Classificação da RCQ e IC de cada aluno
+
+            \item Representação gráfica da massa corporal, estatura e IMC
+            pela idade (caso tenhamos um protótipo)
+
+        \end{itemize}
+
+        No trabalho é interessante mostrar a ligação entre os assuntos
+        envolvidos no desenvolvimento do aplicativo e as disciplinas que
+        gostaríamos de envolver no processo de ensino (matemática, educação
+        física e saúde).
 \end{document}
