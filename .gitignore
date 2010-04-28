@@ -6,5 +6,6 @@
 *.aux
 *.toc
 *.dvi
+*.pdf
 docs/periodo_01/aulas
 docs/periodo_01/pim/bibliografia
