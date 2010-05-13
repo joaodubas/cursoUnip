@@ -1,6 +1,8 @@
 inicio
     cd_produto a(3)
     ds_produto a(64)
+
+    ic_novo_produto a(3)
     
     nr_temp_entrada n(3,2)
 
@@ -145,10 +147,10 @@ inicio
     nr_horario_retirada = nr_tempo_retirada + nr_horario_entrada
 
     .criar_delta_dia
-    se nr_horario_retirada >= 24
+    se nr_horario_retirada >= (24 * 60)
         então
-            nr_delta_dia = nr_horario_retirada / 24 #metodo para arredondar
-            nr_horario_retirada = nr_horario_retirada - (24 * 60 * nr_adicionar_dia)
+            nr_delta_dia = arredondar.baixo(nr_horario_retirada / 60 / 24)
+            nr_horario_retirada = nr_horario_retirada - (24 * 60 * nr_delta_dia)
         senão
             nr_delta_dia = 0
     fim se
@@ -166,7 +168,7 @@ inicio
         então
             nr_delta_ano = 1
         senão
-            nr_delta_mes = 0
+            nr_delta_ano = 0
     fim se
 
     nr_ano_retirada = nr_ano_entrada + nr_delta_ano
@@ -185,12 +187,19 @@ inicio
             nr_dia_retirada = nr_dia_entrada + nr_delta_dia
     fim se
 
-    se nr_delta_dia > 1
+    nr_hora_retirada = arredondar.baixo(nr_horario_retirada / 60)
+
+    nr_min_retirada = nr_horario_retirada - (nr_hora_retirada * 60)
+
+    mostrar('Data retirada: ' nr_dia_retirada '/' nr_mes_retirada '/' nr_ano_retirada)
+
+    mostrar('Hora retirada: ' nr_hora_retirada ':' nr_min_retirada)
+
+    entrar('Novo enfornamento? (sim ou nao)' ic_novo_produto)
+
+    se ic_novo_produto == 'sim'
         então
-            nr_horario_retirada = nr_horario_retirada - (nr_delta_dia * 24 * 60)
+            vá para .codigo_produto
     fim se
 
-    nr_hora_retirada = nr_horario_retirada / 60
-
-    nr_minuto_retirada = nr_horario_retirada - (nr_hora_retirada * 60)
 fim
