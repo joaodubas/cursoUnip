@@ -210,8 +210,8 @@ def __definir_tela_retorno(dc_valores):
     '''
     retorno = ''
     tela = []
-    tela.append(u'Código: %(codigo_produto)s\t\tDetalhes: %(descricao_produto)s')
-    tela.append(u'Entrada do produto no forno\t\tTemperatura: %(temperatura)d°C')
+    tela.append(u'Código: %(codigo_produto)s\t\t\tDetalhes: %(descricao_produto)s')
+    tela.append(u'Entrada do produto no forno\tTemperatura: %(temperatura)d°C')
     tela.append(u'Data: %(dia_entrada)02d/%(mes_entrada)02d/%(ano_entrada)04d')
     tela.append(u'Hora: %(hora_entrada)02d:%(minuto_entrada)02d')
     tela.append(u'Saida do produto no forno')
