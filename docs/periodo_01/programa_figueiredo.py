@@ -176,23 +176,23 @@ def __calcular_timestamp_retirada(**kwargs):
     while minuto_preparo >= 0:
         if minuto_saida > 59:
             minuto_saida = 0
-            hora_saida = hora_saida + 1
+            hora_saida += 1
 
         if hora_saida > 23:
             hora_saida = 0
-            dia_saida = dia_saida + 1
+            dia_saida += 1
         
         if dia_saida > dia_limite:
             dia_saida = 1
-            mes_saida = mes_saida + 1
+            mes_saida += 1
         
         if mes_saida > 12:
             mes_saida = 1
-            ano_saida = ano_saida + 1
+            ano_saida += 1
         
-        minuto_preparo = minuto_preparo - 1
-        if minuto_preparo > 0:
-            minuto_saida = minuto_saida + 1
+        minuto_preparo -= 1
+        if minuto_preparo >= 0:
+            minuto_saida += 1
     
     return {
             'dia_entrada': kwargs.get('dia')            \
