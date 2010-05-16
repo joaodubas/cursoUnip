@@ -173,7 +173,7 @@ def __calcular_timestamp_retirada(**kwargs):
     minuto_saida = kwargs.get('minuto')
     minuto_preparo = kwargs.get('minuto_preparo')
 
-    while minuto_preparo > 0:
+    while minuto_preparo >= 0:
         if minuto_saida > 59:
             minuto_saida = 0
             hora_saida = hora_saida + 1
@@ -190,8 +190,9 @@ def __calcular_timestamp_retirada(**kwargs):
             mes_saida = 1
             ano_saida = ano_saida + 1
         
-        minuto_saida = minuto_saida + 1
         minuto_preparo = minuto_preparo - 1
+        if minuto_preparo > 0:
+            minuto_saida = minuto_saida + 1
     
     return {
             'dia_entrada': kwargs.get('dia')            \
@@ -289,4 +290,55 @@ def obter_data_hora_retirada(**kwargs):
     return __definir_tela_retorno(detalhes_fornada)
 
 if __name__ == '__main__':
-    print obter_data_hora_retirada()
+    validar = []
+    msg_numero_invalido = u'Digite um número para %s'
+
+    codigo_produto = ''
+    dia = mes = ano = hora = minuto = temperatura = dia_limite = -1
+
+    while not PRODUTO.has_key(codigo_produto):
+        codigo_produto = str(input(u'Codigo do produto: '))
+
+    while 'temperatura_entrada' not in validar:
+        try:
+            temperatura = int(input(u'Temperatura de preparo: '))
+            validar = __validar_temperatura(temperatura, validar)
+        except ValueError:
+            print msg_numero_invalido % 'a temperatura'
+            continue
+
+    while 'ano_entrada' not in validar          \
+            and 'mes_entrada' not in validar    \
+            and 'dia_entrada' not in validar:
+        try:
+            dia = int(input('Dia da entrada: '))
+            mes = int(input(u'Mes da entrada: '))
+            ano = int(input('Ano da entrada: '))
+            
+            validar = __validar_ano(ano, validar)
+            validar = __validar_mes(mes, validar)
+            dia_limite = __definir_dia_limite(mes, ano, validar)
+            validar = __validar_dia(dia, dia_limite, validar)
+        except ValueError:
+            print msg_numero_invalido % 'a data'
+            continue
+
+    while 'hora_entrada' not in validar \
+            and 'minuto_entrada' not in validar:
+        try:
+            hora = int(input(u'Hora de entrada: '))
+            minuto = int(input(u'Minuto de entrada: '))
+
+            validar = __validar_hora(hora, validar)
+            validar = __validar_minuto(minuto, validar)
+        except ValueError:
+            print msg_numero_invalido % u'o horário'
+            continue
+
+    print obter_data_hora_retirada(codigo = codigo_produto  \
+            , temperatura = temperatura \
+            , dia = dia                 \
+            , mes = mes                 \
+            , ano = ano                 \
+            , hora = hora               \
+            , minuto = minuto)
