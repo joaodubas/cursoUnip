@@ -1,0 +1,209 @@
+inicio
+    codigoProduto a(3)
+    descricaoProduto a(64)
+
+    novoProduto a(3)
+
+    temperaturaPreparo n(3,2)
+
+    diaInicio n(2,0)
+    mesInicio n(2,0)
+    anoInicio n(2,0)
+    horaInicio n(2,0)
+    minutoInicio n(2,0)
+
+    diaFim n(2,0)
+    mesFim n(2,0)
+    anoFim n(2,0)
+    horaFim n(2,0)
+    minutoFim n(2,0)
+
+    tempoPreparo n(3,0)
+    tempoPreparoAte80 n(3,0)
+    tempoPreparoAte120 n(3,0)
+    tempoPreparoMaior120 n(3,0)
+
+    ultimoDiaMes n(2,0)
+
+    .codigo_produto
+    entrar('Produto: ' codigoProduto)
+
+    se codigoProduto == 'BR1'
+        então
+            descricaoProduto = 'Broa de milho'
+            tempoPreparoAte80 = 120
+            tempoPreparoAte120 = 50
+            tempoPreparoMaior120 = 30
+    senão se codigoProduto == 'BR2'
+        então
+            descricaoProduto = 'Broa de fubá'
+            tempoPreparoAte80 = 80
+            tempoPreparoAte120 = 40
+            tempoPreparoMaior120 = 20
+    senão se codigoProduto == 'PF1'
+        então
+            descricaoProduto = 'Pão francês'
+            tempoPreparoAte80 = 100
+            tempoPreparoAte120 = 80
+            tempoPreparoMaior120 = 30
+    senão se codigoProduto == 'PF2'
+        então
+            descricaoProduto = 'Pão integral'
+            tempoPreparoAte80 = 110
+            tempoPreparoAte120 = 70
+            tempoPreparoMaior120 = 20
+    senão se codigoProduto == 'PC1'
+        então
+            descricaoProduto = 'Pão de cara'
+            tempoPreparoAte80 = 85
+            tempoPreparoAte120 = 42
+            tempoPreparoMaior120 = 18
+    senão se codigoProduto == 'BO1'
+        então
+            descricaoProduto = 'Bolo'
+            tempoPreparoAte80 = 90
+            tempoPreparoAte120 = 60
+            tempoPreparoMaior120 = 30
+        senão
+            mostrar('Produto não cadastrado!!!')
+            vá para .codigo_produto
+    fim se
+
+    mostrar('Descrição: ' descricaoProduto)
+
+    .temperatura_preparo
+    entrar('Temperatura: ' temperaturaPreparo)
+
+    se temperaturaPreparo < 1
+        então
+            mostrar('Temperatura deve ser de pelo 1°C!')
+            vá para .temperatura_preparo
+    senão se temperaturaPreparo <= 80
+        então
+            tempoPreparo = tempoPreparoAte80
+    senão se temperaturaPreparo <= 120
+        então
+            tempoPreparo = tempoPreparoAte120
+        senão
+            tempoPreparo = tempoPreparoMaior120
+    fim se
+
+    .data_entrada
+    entrar('Data enfornamento: ' diaInicio '/' mesInicio '/' anoInicio)
+
+    se anoInicio < 0
+        então
+            mostrar('Ano não pode ser negativo!')
+            vá para .data_entrada
+    fim se
+
+    se mesInicio < 1 ou mesInicio > 12
+        então
+            mostrar('Mês incorreto!')
+            vá para .data_entrada
+    senão se mesInicio == 2
+        se anoInicio%4 == 0
+            então
+                ultimoDiaMes = 29
+            senão
+                ultimoDiaMes = 28
+        fim se
+    senão se mesInicio == 1 || mesInicio == 3
+            || mesInicio == 5 || mesInicio == 7
+            || mesInicio == 8 || mesInicio == 11
+            || mesInicio == 12
+        então
+            ultimoDiaMes = 31
+        senão
+            ultimoDiaMes = 30
+    fim se
+
+    se diaInicio < 1 ou diaInicio > ultimoDiaMes
+        então
+            mostrar('Dia inválido!')
+            vá para .data_entrada
+    fim se
+
+    .hora_entrada
+    entrar('Hora enfornamento: ' horaInicio ':' minutoInicio)
+
+    se horaInicio < 0 ou horaInicio > 23
+        então
+            mostra('Hora inválida!')
+            vá para .hora_entrada
+    senão se minutoInicio < 0 ou minutoInicio > 59
+        então
+            mostra('Minuto inválido!')
+            vá para .hora_entrada
+    fim se
+
+    minutoFim = minutoInicio
+    horaFim = horaInicio
+    diaFim = diaInicio
+    mesFim = mesInicio
+    anoFim = anoInicio
+
+    enquanto tempoPreparo >= 0
+        se minutoFim > 59
+            então
+                horaFim = horaFim + 1
+                minutoFim = 0
+        fim se
+
+        se horaFim > 23
+            então
+                diaFim = diaFim + 1
+                horaFim = 0
+        fim se
+
+        se diaFim > ultimoDiaMes
+            então
+                mesFim = mesFim + 1
+                diaFim = 1
+                se mesFim <= 12
+                    então
+                        se mesInicio == 2
+                            se anoInicio%4 == 0
+                                então
+                                    ultimoDiaMes = 29
+                                senão
+                                    ultimoDiaMes = 28
+                            fim se
+                        senão se mesInicio == 1 || mesInicio == 3
+                                || mesInicio == 5 || mesInicio == 7
+                                || mesInicio == 8 || mesInicio == 11
+                                || mesInicio == 12
+                            então
+                                ultimoDiaMes = 31
+                            senão
+                                ultimoDiaMes = 30
+                        fim se
+                fim se
+        fim se
+
+        se mesFim > 12
+            anoFim = anoFim + 1
+            mesFim = 1
+            ultimoDiaMes = 31
+        fim se
+
+        tempoPreparo = tempoPreparo - 1
+
+        se tempoPreparo >= 0
+            minutoFim = minutoFim + 1
+        fim se
+
+    fim enquanto
+
+    mostrar('Data retirada: ' diaFim '/' mesFim '/' anoFim)
+
+    mostrar('Hora retirada: ' horaFim ':' minutoFim)
+
+    entrar('Novo enfornamento? (sim ou nao)' novoProduto)
+
+    se novoProduto == 'sim'
+        então
+            vá para .codigo_produto
+    fim se
+
+fim
