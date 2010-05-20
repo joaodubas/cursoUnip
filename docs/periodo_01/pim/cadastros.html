@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <title>Cadastro :: Matem&aacute;tica &amp; Sa&uacute;de</title>
+</head>
+<body>
+    <div id='container'>
+        <div id='header'>
+            <a id='logo_unip' class='logo' href='http://www.unip.br/'>UNIP</a>
+            <h1>Matem&aacute;tica &amp; Sa&uacute;de</h1>
+            <h2>
+                <abbr title='&Iacute;ndice de Massa Corporal'>IMC</abbr> &amp;
+                Sa&uacute;de
+            </h2>
+            <ul id='main_nav' class='nav_hor'>
+                <li>
+                    <a href='#'>Item</a>
+                </li>
+            </ul>
+        </div>
+        <div id='content'>
+            <form method='get' action='./' id='cadastro_turma'>
+                <fieldset id='grp_turma'>
+                    <legend id='for_grp_turma'>Cadastro turma</legend>
+                    <ul class='form_container'>
+                        <li>
+                            <label for='ipt_nome_turma'>Nome:</label>
+                            <input type='text' size='16' maxlength='64'
+                                    id='ipt_nome_turma' name='nm_turma' />
+                        </li>
+                        <li>
+                            <label for='sel_periodo_turma'>Per&iacute;odo</label>
+                            <select id='sel_periodo_turma' name='cd_periodo'>
+                                <optgroup label='Selecione um per&iacute;odo'>
+                                    <option value='1'>Matutino</option>
+                                    <option value='2'>Vespertino</option>
+                                    <option value='3'>Noturno</option>
+                                    <option value='4'>Integral</option>
+                                </optgroup>
+                            </select>
+                        </li>
+                    </ul>
+                </fieldset>
+                <ul class='btn_container'>
+                    <li class='btn_submit'>
+                        <button type='submit'>Enviar</button>
+                    </li>
+                    <li class='btn_cancel'>
+                        <button type='button'>Cancelar</button>
+                    </li>
+                </ul>
+            </form>
+            <form method='get' action='./' id='cadastro_aluno'>
+                <fieldset id='grp_aluno'>
+                    <legend id='for_grp_aluno'>Cadastro aluno</legend>
+                    <ul class='form_container'>
+                        <li>
+                            <label for='ipt_nome_aluno'>Nome:</label>
+                            <input type='text' size='16' maxlength='64'
+                                    id='ipt_nome_aluno' name='nm_aluno' />
+                        </li>
+                        <li>
+                            G&ecirc;nero:
+                            <ul class='grp_radio'>
+                                <li>
+                                    <input type='radio' id='ipt_masculino'
+                                            name='cd_genero' />
+                                    <label for='ipt_masculino'>Masculino</label>
+                                </li>
+                                <li>
+                                    <input type='radio' id='ipt_feminino'
+                                            name='cd_genero' />
+                                    <label for='ipt_feminino'>Feminino</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label for='ipt_dt_nascimento'>Data de nascimento:</label>
+                            <input type='text' size='16' maxlength='10'
+                                    id='ipt_dt_nascimento' name='dt_nascimento' />
+                        </li>
+                        <li>
+                            <label for='sel_turma'>Turma:</label>
+                            <select id='sel_turma' name='cd_turma'>
+                            </select>
+                        </li>
+                    </ul>
+                </fieldset>
+                <ul class='btn_container'>
+                    <li class='btn_submit'>
+                        <button type='submit'>Enviar</button>
+                    </li>
+                    <li class='btn_cancel'>
+                        <button type='button'>Cancelar</button>
+                    </li>
+                </ul>
+            </form>
+            <form method='get' action='./' id='cadastro_avaliacao'>
+            </form>
+        </div>
+        <div id='footer'>
+        </div>
+    </div>
+</body>
+</html>
