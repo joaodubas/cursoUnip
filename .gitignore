@@ -7,5 +7,6 @@
 *.toc
 *.dvi
 *.pdf
+*.kpf
 docs/periodo_01/aulas
 docs/periodo_01/pim/bibliografia

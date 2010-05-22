@@ -1,12 +1,6 @@
 [submodule "docs/periodo_01/pim/programa/media/javascript/jStorage"]
 	path = docs/periodo_01/pim/programa/media/javascript/jStorage
 	url = git://github.com/andris9/jStorage.git
-[submodule "docs/periodo_01/pim/programa/media/css/fluid_grid_system"]
-	path = docs/periodo_01/pim/programa/media/css/fluid_grid_system
-	url = git://github.com/jpsilvashy/fluid-grid-system.git
 [submodule "docs/periodo_01/pim/programa/media/javascript/mootools_database"]
 	path = docs/periodo_01/pim/programa/media/javascript/mootools_database
 	url = git://github.com/SunboX/mootools-database.git
-[submodule "docs/periodo_01/pim/programa/media/css/fluid960gs"]
-	path = docs/periodo_01/pim/programa/media/css/fluid960gs
-	url = git://github.com/bauhouse/fluid960gs.git
