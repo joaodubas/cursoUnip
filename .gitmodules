@@ -7,3 +7,6 @@
 [submodule "docs/periodo_01/pim/programa/media/javascript/mootools_database"]
 	path = docs/periodo_01/pim/programa/media/javascript/mootools_database
 	url = git://github.com/SunboX/mootools-database.git
+[submodule "docs/periodo_01/pim/programa/media/css/fluid960gs"]
+	path = docs/periodo_01/pim/programa/media/css/fluid960gs
+	url = git://github.com/bauhouse/fluid960gs.git
