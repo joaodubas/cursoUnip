@@ -4,12 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    <link rel='stylesheet' href='./media/css/reset-min.css' media='all' />
+    <link rel='stylesheet' type='text/css' media='all'
+            href='./media/css/fluid960gs/css/reset.css' />
+    <link rel='stylesheet' type='text/css' media='all'
+            href='./media/css/fluid960gs/css/text.css' />
+    <link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/fluid960gs/css/grid.css' />
+    <!--<link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/fluid960gs/css/layout.css' />-->
     <title>Cadastro :: Matem&aacute;tica &amp; Sa&uacute;de</title>
 </head>
 <body>
-    <div id='container' class='fluid_grid_layout'>
-        <div id='header' class='six_column section'>
+    <div id='container' class='container_12'>
+        <div id='header'>
             <a id='logo_unip' class='logo' href='http://www.unip.br/'>UNIP</a>
             <h1>Matem&aacute;tica &amp; Sa&uacute;de</h1>
             <h2>
@@ -22,7 +29,7 @@
                 </li>
             </ul>
         </div>
-        <div id='content' class='six_column section'>
+        <div id='content'>
             <form method='get' action='./' id='cadastro_turma'>
                 <fieldset id='grp_turma'>
                     <legend id='for_grp_turma'>Cadastro turma</legend>
@@ -100,9 +107,39 @@
                 </ul>
             </form>
             <form method='get' action='./' id='cadastro_avaliacao'>
+                <fieldset id='grp_avaliacao'>
+                    <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
+                    <ul class='form_container'>
+                        <li>
+                            <label for='sel_aluno'>Aluno:</label>
+                            <select id='sel_aluno' name='cd_aluno'>
+                            </select>
+                        </li>
+                        <li>
+                            <label for='ipt_massa'>Massa corporal:</label>
+                            <input type='text' size='16' maxlength='8'
+                                    id='ipt_massa' name='nr_massa' />
+                            (kg)
+                        </li>
+                        <li>
+                            <label for='ipt_estatura'>Estatura:</label>
+                            <input type='text' size='16' maxlength='8'
+                                    id='ipt_estatura' name='nr_estatura' />
+                            (cm)
+                        </li>
+                    </ul>
+                </fieldset>
+                <ul class='btn_container'>
+                    <li class='btn_submit'>
+                        <button type='submit'>Enviar</button>
+                    </li>
+                    <li class='btn_cancel'>
+                        <button type='button'>Cancelar</button>
+                    </li>
+                </ul>
             </form>
         </div>
-        <div id='footer' class='six_column section'>
+        <div id='footer'>
         </div>
     </div>
 </body>
