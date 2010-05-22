@@ -4,11 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <link rel='stylesheet' href='./media/css/reset-min.css' media='all' />
     <title>Cadastro :: Matem&aacute;tica &amp; Sa&uacute;de</title>
 </head>
 <body>
-    <div id='container'>
-        <div id='header'>
+    <div id='container' class='fluid_grid_layout'>
+        <div id='header' class='six_column section'>
             <a id='logo_unip' class='logo' href='http://www.unip.br/'>UNIP</a>
             <h1>Matem&aacute;tica &amp; Sa&uacute;de</h1>
             <h2>
@@ -21,7 +22,7 @@
                 </li>
             </ul>
         </div>
-        <div id='content'>
+        <div id='content' class='six_column section'>
             <form method='get' action='./' id='cadastro_turma'>
                 <fieldset id='grp_turma'>
                     <legend id='for_grp_turma'>Cadastro turma</legend>
@@ -58,7 +59,7 @@
                     <legend id='for_grp_aluno'>Cadastro aluno</legend>
                     <ul class='form_container'>
                         <li>
-                            <label for='ipt_nome_aluno'>Nome:</label>
+                            <label for='ipt_nome_aluno' class='two column'>Nome:</label>
                             <input type='text' size='16' maxlength='64'
                                     id='ipt_nome_aluno' name='nm_aluno' />
                         </li>
@@ -101,7 +102,7 @@
             <form method='get' action='./' id='cadastro_avaliacao'>
             </form>
         </div>
-        <div id='footer'>
+        <div id='footer' class='six_column section'>
         </div>
     </div>
 </body>
