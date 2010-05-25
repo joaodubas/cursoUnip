@@ -6,9 +6,13 @@
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <link rel='stylesheet' type='text/css' media='screen, projection'
             href='./media/css/reset-min.css' />
+    <!-- -->
     <link rel='stylesheet' type='text/css' media='screen, projection'
             href='./media/css/base-min.css' />
+    <!-- -->
     <!--
+    <link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/master.css' />
     <link rel='stylesheet' type='text/css' media='all'
             href='./media/css/fluid960gs/css/reset.css' />
     <link rel='stylesheet' type='text/css' media='all'
@@ -32,7 +36,8 @@
     color: rgba(248,248,248,1);
     text-shadow: 1px 1px 2px rgba(8,8,8,0.75);
 }
-.form_container, .btn_container
+.form_container
+    , .btn_container
 {
     margin: 0;
     padding: 0;
@@ -59,6 +64,9 @@
     .btn_submit button {
         color: #fc5;
         background: #f70;
+        background: -moz-linear-gradient(top, #fc5, #f70);
+        background: -webkit-gradient(linear, left top, left bottom, from(#fc5)
+                , to(#f70));
         border: 2px solid #696969;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
@@ -98,16 +106,16 @@
                     <ul class='form_container'>
                         <li>
                             <label for='ipt_nome_turma'
-                                    class='lbl_text grid_2'>Nome:</label>
-                            <span class='grid_4'>
+                                    class='lbl_text'>Nome:</label>
+                            <span class='frm_field'>
                                 <input type='text' size='16' maxlength='64'
                                         id='ipt_nome_turma' name='nm_turma' />
                             </span>
                         </li>
                         <li>
                             <label for='sel_periodo_turma'
-                                    class='lbl_text grid_2'>Per&iacute;odo</label>
-                            <span class='grid_4'>
+                                    class='lbl_text'>Per&iacute;odo</label>
+                            <span class='frm_field'>
                                 <select id='sel_periodo_turma' name='cd_periodo'>
                                     <optgroup label='Selecione um per&iacute;odo'>
                                         <option value='1'>Matutino</option>
@@ -121,10 +129,10 @@
                     </ul>
                 </fieldset>
                 <ul class='btn_container'>
-                    <li class='btn_submit grid_4'>
+                    <li class='btn_submit'>
                         <button type='submit'>Adicionar</button>
                     </li>
-                    <li class='btn_cancel grid_4'>
+                    <li class='btn_cancel'>
                         <button type='button'>Cancelar</button>
                     </li>
                 </ul>
@@ -135,8 +143,8 @@
                     <ul class='form_container'>
                         <li>
                             <label for='ipt_nome_aluno'
-                                    class='lbl_text grid_2'>Nome:</label>
-                            <span class='grid_4'>
+                                    class='lbl_text'>Nome:</label>
+                            <span class='frm_field'>
                                 <input type='text' size='16' maxlength='64'
                                         id='ipt_nome_aluno' name='nm_aluno' />
                             </span>
@@ -146,30 +154,30 @@
                             <ul class='grp_radio'>
                                 <li>
                                     <input type='radio' id='ipt_masculino'
-                                            name='cd_genero' class='grid_1' />
+                                            name='cd_genero' class='' />
                                     <label for='ipt_masculino'
-                                            class='lbl_radio grid_2'>Masculino</label>
+                                            class='lbl_radio'>Masculino</label>
                                 </li>
                                 <li>
                                     <input type='radio' id='ipt_feminino'
-                                            name='cd_genero' class='grid_1' />
+                                            name='cd_genero' class='' />
                                     <label for='ipt_feminino'
-                                            class='lbl_radio grid_2'>Feminino</label>
+                                            class='lbl_radio'>Feminino</label>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <label for='ipt_dt_nascimento'
-                                    class='lbl_text grid_2'>Data de nascimento:</label>
-                            <span class='grid_4'>
+                                    class='lbl_text'>Data de nascimento:</label>
+                            <span class='frm_field'>
                                 <input type='text' size='16' maxlength='10'
                                         id='ipt_dt_nascimento' name='dt_nascimento' />
                             </span>
                         </li>
                         <li>
                             <label for='sel_turma'
-                                    class='lbl_text grid_2'>Turma:</label>
-                            <span class='grid_4'>
+                                    class='lbl_text'>Turma:</label>
+                            <span class='frm_field'>
                                 <select id='sel_turma' name='cd_turma'>
                                 </select>
                             </span>
@@ -177,10 +185,10 @@
                     </ul>
                 </fieldset>
                 <ul class='btn_container'>
-                    <li class='btn_submit grid_3'>
+                    <li class='btn_submit'>
                         <button type='submit'>Adicionar</button>
                     </li>
-                    <li class='btn_cancel grid_3'>
+                    <li class='btn_cancel'>
                         <button type='button'>Cancelar</button>
                     </li>
                 </ul>
@@ -191,16 +199,16 @@
                     <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
                     <ul class='form_container'>
                         <li>
-                            <label for='sel_aluno' class='grid_2'>Aluno:</label>
-                            <span class='grid_4'>
+                            <label for='sel_aluno' class=''>Aluno:</label>
+                            <span class='frm_field'>
                                 <select id='sel_aluno' name='cd_aluno'>
                                 </select>
                             </span>
                         </li>
                         <li>
                             <label for='ipt_massa'
-                                    class='grid_2'>Massa corporal:</label>
-                            <span class='grid_4'>
+                                    class=''>Massa corporal:</label>
+                            <span class='frm_field'>
                                 <input type='text' size='16' maxlength='8'
                                         id='ipt_massa' name='nr_massa' />
                                 (kg)
@@ -209,8 +217,8 @@
                         <li class='clear'>&nbsp;</li>
                         <li>
                             <label for='ipt_estatura'
-                                    class='grid_2'>Estatura:</label>
-                            <span class='grid_4'>
+                                    class=''>Estatura:</label>
+                            <span class='frm_field'>
                                 <input type='text' size='16' maxlength='8'
                                         id='ipt_estatura' name='nr_estatura' />
                                 (cm)
@@ -219,10 +227,10 @@
                     </ul>
                 </fieldset>
                 <ul class='btn_container'>
-                    <li class='btn_submit grid_2'>
+                    <li class='btn_submit'>
                         <button type='submit'>Adicionar</button>
                     </li>
-                    <li class='btn_cancel grid_2'>
+                    <li class='btn_cancel'>
                         <button type='button'>Cancelar</button>
                     </li>
                 </ul>
