@@ -186,7 +186,7 @@ def __calcular_timestamp_retirada(**kwargs):
         if dia_saida > dia_limite:
             dia_saida = 1
             mes_saida += 1
-            if mes_saida <= 12
+            if mes_saida <= 12:
                 dia_limite = __definir_dia_limite(mes_saida, ano_saida, validar)
 
         if mes_saida > 12:
@@ -198,7 +198,7 @@ def __calcular_timestamp_retirada(**kwargs):
         if minuto_preparo >= 0:
             minuto_saida += 1
 
-    timestamp_saida = datetime.datetime(ano_saida, mes_saida, dia_saida,    \
+    timestamp_saida = datetime(ano_saida, mes_saida, dia_saida,    \
             hora_saida, minuto_saida)
     return {
             'dia_entrada': kwargs.get('dia')            \
@@ -236,7 +236,7 @@ def obter_data_hora_retirada(**kwargs):
     produto
     '''
     timestamp_hoje = datetime.today()
-    timestamp_entrada
+    timestamp_entrada = datetime.today()
 
     validar = []
     detalhes_fornada = {}
@@ -280,7 +280,7 @@ def obter_data_hora_retirada(**kwargs):
     #validar temperatura
     validar = __validar_temperatura(temperatura_entrada, validar)
 
-    timestamp_entrada = datetime.datetime(ano_entrada, mes_entrada, dia_entrada,\
+    timestamp_entrada = datetime(ano_entrada, mes_entrada, dia_entrada,\
             hora_entrada, minuto_entrada)
 
     minuto_saida = __obter_tempo_saida(temperatura_produto, temperatura_entrada)
