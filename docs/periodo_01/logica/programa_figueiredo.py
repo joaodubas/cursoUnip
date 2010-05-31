@@ -356,4 +356,6 @@ if __name__ == '__main__':
                 , hora = hora               \
                 , minuto = minuto)
 
+        codigo_produto = ''
+        validar = []
         novo_produto = str(input('Novo produto (sim ou nao) '))
