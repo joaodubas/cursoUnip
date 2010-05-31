@@ -4,7 +4,7 @@ inicio
     ds_produto a(64)
 
     ic_novo_produto a(3)
-    
+
     nr_temp_entrada n(3,2)
 
     nr_dia_entrada n(2,0)
@@ -69,7 +69,7 @@ inicio
                 nr_tempo_temp_eq_80 = 90
                 nr_tempo_temp_eq_120 = 60
                 nr_tempo_temp_gt_120 = 30
-            senão 
+            senão
                 mostrar('Produto não cadastrado!!!')
                 vá para .codigo_produto
         fim se
@@ -120,7 +120,7 @@ inicio
             senão
                 nr_dia_limite = 30
         fim se
-                
+
         se nr_dia_entrada < 1 ou nr_dia_entrada > nr_dia_limite
             então
                 mostrar('Dia inválido!')
@@ -147,7 +147,7 @@ inicio
         nr_min_retirada = nr_min_entrada
 
         enquanto nr_tempo_retirada >= 0
-            
+
             se nr_min_retirada > 59
                 então
                     nr_hora_retirada = nr_hora_retirada + 1
