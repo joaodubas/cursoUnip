@@ -23,79 +23,259 @@
             href='./media/css/fluid960gs/css/layout.css' />
     -->
     <style type='text/css' media='screen, projection'>
-#logo_unip {
-    background: url(./media/image/logo_unip.gif) 0 0 no-repeat;
-    text-indent: -100000px;
-    display: block;
-    width: 166px;
-    height: 69px;
-}
-#header h1
-    , #header h2
+/* -----------------------------------------------------------------------------
+ * Definindo CONTAINER
+ */
+#container
 {
-    color: rgba(248,248,248,1);
-    text-shadow: 1px 1px 2px rgba(8,8,8,0.75);
+    border-color: #696969;
+    border-style: solid;
+    border-width: 0 4px;
+    margin: 0 auto;
+    padding: 0 2.5%;
+    width: 80%;
 }
-.form_container
-    , .btn_container
-{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-    .form_container li, .btn_container li
+
+/* -----------------------------------------------------------------------------
+ * Definindo CABECALHO, CONTEUDO E RODAPE
+ */
+    #header
+        , #content
+        , #footer
     {
-        margin: 0;
-        padding: 8px 0;
-        list-style-type: none;
+        position: relative;
+        overflow: hidden;
     }
-        label.lbl_text
+
+/* -----------------------------------------------------------------------------
+ * Definindo CABECALHO
+ */
+    #header
+    {
+        /*background: #fff;
+        border-bottom: 4px solid #696969;
+        margin: 0 -12.5%;
+        width: auto;*/
+        height: 100px;
+    }
+        #logo_unip
         {
-            text-align: right;
+            background: url(./media/image/logo_unip.gif) 0 0 no-repeat;
+            text-indent: -100000px;
+            display: block;
+            width: 166px;
+            height: 69px;
+            position: absolute;
+            top: 15px;
+            left: 0;
         }
-    .btn_submit button
-        , .btn_cancel button
+        #header h1
+            , #header h2
+        {
+            color: rgba(248,248,248,1);
+            margin: 0;
+            padding: 0;
+            text-shadow: 1px 1px 2px rgba(8,8,8,0.75);
+            position: absolute;
+        }
+        #header h1
+        {
+            top: 15px;
+            left: 170px;
+        }
+        #header h2
+        {
+            top: 35px;
+            left: 295px;
+        }
+        .nav_hor
+        {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .nav_hor
+            , .nav_hor li
+        {
+            list-style-type: none;
+        }
+            .nav_hor li
+            {
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+        #main_nav
+        {
+            border-color: #9c9c9c;
+            border-width: 0 2px 2px 2px;
+            border-style: solid;
+            -moz-border-radius: 0 0 5px 5px;
+            -webkit-border-radius: 0 0 5px 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: auto;
+        }
+            #main_nav li
+            {
+                border-right: 2px solid #9c9c9c;
+            }
+            #main_nav .last
+            {
+                border-right: none;
+            }
+                #main_nav a
+                {
+                    display: block;
+                    padding: 0 5px 4px 5px;
+                }
+                #main_nav .first a
+                {
+                    padding-left: 6px;
+                }
+                #main_nav .last a
+                {
+                    padding-right: 6px;
+                }
+/* -----------------------------------------------------------------------------
+ * Definindo CONTEUDO
+ */
+    /*#content
     {
-        margin: 0;
-        padding: 0;
-        cursor: pointer;
-        width: 25%;
-    }
-    .btn_submit button {
-        color: #fc5;
-        background: #f70;
-        background: -moz-linear-gradient(top, #fc5, #f70);
-        background: -webkit-gradient(linear, left top, left bottom, from(#fc5)
-                , to(#f70));
-        border: 2px solid #696969;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        font-weight: 700;
-        text-shadow: 1px 1px 1px rgba(36,36,36,0.875);
-        padding: 6px 0;
-    }
-    .btn_cancel button {
-        color: #033669;
-        border: 0;
-        background: none;
-        padding: 8px 0; /*LEMBRAR DE SOMAR O VALOR DO .BTN_SUBMIT BUTTON*/
-        text-decoration: underline;
-    }
+        background: #fff;
+        margin: -4px -2.5% 0 -2.5%;
+        width: auto;
+    }*/
+        fieldset
+        {
+            padding: 0 1.5%;
+        }
+            legend
+            {
+                margin: 0 -1.5%;
+                border-bottom: 2px solid #363636;
+                font-weight: 700;
+                display: block;
+                width: 102.5%;
+            }
+            .form_container
+                , .btn_container
+            {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+            .btn_container
+            {
+                padding-left: 22%;
+                overflow: hidden;
+            }
+                .form_container li
+                    , .btn_container li
+                {
+                    margin: 0;
+                    padding: 8px 0;
+                    list-style-type: none;
+                }
+                .form_container li
+                {
+                    overflow: hidden;
+                }
+                    .lbl_text
+                        , .frm_field
+                        , .grp_radio
+                    {
+                        float: left;
+                    }
+                    .frm_field
+                        , .grp_radio
+                    {
+                        width: 78%;
+                    }
+                    .lbl_text
+                    {
+                        margin-right: 0.5%;
+                        text-align: right;
+                        font-weight: 700;
+                        width: 21.5%;
+                    }
+                    span.lbl_text {
+                        display: block;
+                    }
+                    .frm_field {
+                        display: block;
+                    }
+                    .grp_radio
+                        , .grp_radio li
+                    {
+                        margin: 0;
+                        padding: 0;
+                        list-style-type: none;
+                    }
+                        .grp_radio li
+                        {
+                            float: left;
+                            width: auto;
+                            margin-right: 2.5%
+                        }
+                .btn_container li
+                {
+                    float: left;
+                    width: 50%;
+                }
+                .btn_submit button
+                    , .btn_cancel button
+                {
+                    margin: 0 auto;
+                    padding: 0;
+                    cursor: pointer;
+                    width: 75%;
+                }
+                .btn_submit button {
+                    color: #fc5;
+                    background: #f70;
+                    background: -moz-linear-gradient(top, #fc5, #f70);
+                    background: -webkit-gradient(linear, left top, left bottom, from(#fc5)
+                            , to(#f70));
+                    border: 2px solid #696969;
+                    -moz-border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    font-weight: 700;
+                    text-shadow: 1px 1px 1px rgba(36,36,36,0.875);
+                    padding: 6px 0;
+                }
+                .btn_cancel button {
+                    color: #033669;
+                    border: 0;
+                    background: none;
+                    padding: 8px 0; /*LEMBRAR DE SOMAR O VALOR DO .BTN_SUBMIT BUTTON*/
+                    text-decoration: underline;
+                }
     </style>
     <title>Cadastro :: Matem&aacute;tica &amp; Sa&uacute;de</title>
 </head>
 <body>
-    <div id='container' class='container_12'>
+    <div id='container'>
         <div id='header'>
             <a id='logo_unip' class='logo' href='http://www.unip.br/'>UNIP</a>
             <h1>Matem&aacute;tica &amp; Sa&uacute;de</h1>
             <h2>
                 <abbr title='&Iacute;ndice de Massa Corporal'>IMC</abbr> &amp;
-                Sa&uacute;de
+                <abbr title='Rela&ccedil;&atilde;o Cintura-Quadril'>RCQ</abbr>
             </h2>
             <ul id='main_nav' class='nav_hor'>
+                <li class='first'>
+                    <a href='#'>Turma</a>
+                </li>
                 <li>
-                    <a href='#'>Item</a>
+                    <a href='#'>Aluno</a>
+                </li>
+                <li>
+                    <a href='#'>Avalia&ccedil;&atilde;o</a>
+                </li>
+                <li class='last'>
+                    <a href='#'>Relat&oacute;rio</a>
                 </li>
             </ul>
         </div>
@@ -114,7 +294,7 @@
                         </li>
                         <li>
                             <label for='sel_periodo_turma'
-                                    class='lbl_text'>Per&iacute;odo</label>
+                                    class='lbl_text'>Per&iacute;odo:</label>
                             <span class='frm_field'>
                                 <select id='sel_periodo_turma' name='cd_periodo'>
                                     <optgroup label='Selecione um per&iacute;odo'>
@@ -150,7 +330,7 @@
                             </span>
                         </li>
                         <li>
-                            G&ecirc;nero:
+                            <span class='lbl_text'>G&ecirc;nero:</span>
                             <ul class='grp_radio'>
                                 <li>
                                     <input type='radio' id='ipt_masculino'
@@ -168,7 +348,7 @@
                         </li>
                         <li>
                             <label for='ipt_dt_nascimento'
-                                    class='lbl_text'>Data de nascimento:</label>
+                                    class='lbl_text'>Data nascimento:</label>
                             <span class='frm_field'>
                                 <input type='text' size='16' maxlength='10'
                                         id='ipt_dt_nascimento' name='dt_nascimento' />
@@ -199,28 +379,72 @@
                     <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
                     <ul class='form_container'>
                         <li>
-                            <label for='sel_aluno' class=''>Aluno:</label>
+                            <label for='sel_turma'
+                                    class='lbl_text'>Turma:</label>
+                            <span class='frm_field'>
+                                <select id='sel_turma' name='cd_turma'>
+                                </select>
+                            </span>
+                        </li>
+                        <li>
+                            <label for='sel_aluno'
+                                    class='lbl_text'>Aluno:</label>
                             <span class='frm_field'>
                                 <select id='sel_aluno' name='cd_aluno'>
                                 </select>
                             </span>
                         </li>
                         <li>
+                            <label for='ipt_dt_avaliacao'
+                                    class='lbl_text'>Data avalia&ccedil;&atilde;o:</label>
+                            <span class='frm_field'>
+                                <input type='text' size='16' maxlength='10'
+                                        id='ipt_dt_avaliacao' name='dt_avaliacao' />
+                            </span>
+                        </li>
+                    </ul>
+                </fieldset>
+                <fieldset id='grp_antropometria'>
+                    <legend id='for_grp_antropometria'>Antropometria</legend>
+                    <ul class='form_container'>
+                        <li>
                             <label for='ipt_massa'
-                                    class=''>Massa corporal:</label>
+                                    class='lbl_text'>Massa corporal:</label>
                             <span class='frm_field'>
                                 <input type='text' size='16' maxlength='8'
                                         id='ipt_massa' name='nr_massa' />
                                 (kg)
                             </span>
                         </li>
-                        <li class='clear'>&nbsp;</li>
                         <li>
                             <label for='ipt_estatura'
-                                    class=''>Estatura:</label>
+                                    class='lbl_text'>Estatura:</label>
                             <span class='frm_field'>
-                                <input type='text' size='16' maxlength='8'
+                                <input type='text' size='16' maxlength='6'
                                         id='ipt_estatura' name='nr_estatura' />
+                                (cm)
+                            </span>
+                        </li>
+                    </ul>
+                </fieldset>
+                <fieldset id='grp_circunferencia'>
+                    <legend id='for_grp_circunferencia'>Circunfer&ecirc;ncia</legend>
+                    <ul class='form_container'>
+                        <li>
+                            <label for='ipt_cintura'
+                                    class='lbl_text'>Cintura:</label>
+                            <span class='frm_field'>
+                                <input type='text' size='16' maxlength='6'
+                                        id='ipt_cintura' name='nr_cct' />
+                                (cm)
+                            </span>
+                        </li>
+                        <li>
+                            <label for='ipt_quadril'
+                                    class='lbl_text'>Quadril:</label>
+                            <span class='frm_field'>
+                                <input type='text' size='16' maxlength='6'
+                                        id='ipt_quadril' name='nr_cqd' />
                                 (cm)
                             </span>
                         </li>
