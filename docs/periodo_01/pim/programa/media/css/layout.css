@@ -1,0 +1,391 @@
+/* -----------------------------------------------------------------------------
+ * Definindo TAGS
+ */
+body
+{
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 0.8em;
+}
+a:link
+    , a:visited
+    , a:hover
+    , a:active
+{
+    font-weight: 700;
+}
+a:link
+    , a:visited
+    , a:hover
+{
+    color: #58b;
+}
+a:link
+    , a:visited
+{
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+a:active
+{
+    color: #963;
+}
+fieldset
+{
+    padding: 0 1.5%;
+}
+    legend
+    {
+        margin: 0 -1.5%;
+        border-bottom: 2px solid #363636;
+        font-weight: 700;
+        display: block;
+        width: 102.5%;
+    }
+/* -----------------------------------------------------------------------------
+ * Definindo CONTAINER
+ */
+#container
+{
+    border-color: #696969;
+    border-style: solid;
+    border-width: 0 4px;
+    margin: 0 auto;
+    padding: 0 2.5%;
+    width: 80%;
+}
+
+/* -----------------------------------------------------------------------------
+ * Definindo CABECALHO, CONTEUDO E RODAPE
+ */
+    #header
+        , #content
+        , #footer
+    {
+        position: relative;
+        overflow: hidden;
+    }
+
+/* -----------------------------------------------------------------------------
+ * Definindo CABECALHO
+ */
+#header
+{
+    height: 100px;
+}
+    #logo_unip
+    {
+        background: url(../image/logo_unip.gif) 0 0 no-repeat;
+        text-indent: -100000px;
+        display: block;
+        width: 166px;
+        height: 69px;
+        position: absolute;
+        top: 15px;
+        left: 0;
+    }
+    #header h1
+        , #header h2
+    {
+        color: rgba(248,248,248,0.975);
+        margin: 0;
+        padding: 0;
+        text-shadow: 1px 1px 2px rgba(8,8,8,0.875);
+        position: absolute;
+    }
+    #header h1
+    {
+        top: 15px;
+        left: 170px;
+    }
+    #header h2
+    {
+        top: 35px;
+        left: 295px;
+    }
+/* -----------------------------------------------------------------------------
+ * Definindo MENU
+ */
+    .nav_hor
+    {
+        overflow: hidden;
+    }
+    .nav_hor
+        , .nav_hor li
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+        .nav_hor li
+        {
+            float: left;
+        }
+    #main_nav
+    {
+        border-color: #cfcfcf;
+        border-width: 0 1px 1px 1px;
+        border-style: solid;
+        -moz-border-radius: 0 0 5px 5px;
+        -webkit-border-bottom-right-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        border-radius: 0 0 5px 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+    }
+        #main_nav li
+        {
+            border-right: 1px solid #cfcfcf;
+        }
+        #main_nav .last
+        {
+            border-right: none;
+        }
+            #main_nav a
+            {
+                display: block;
+                padding: 4px 5px;
+            }
+            #main_nav .first a
+            {
+                padding-left: 6px;
+            }
+            #main_nav .last a
+            {
+                padding-right: 6px;
+            }
+            #main_nav a:link
+                , #main_nav a:visited
+                , #main_nav a:hover
+                , #main_nav a:active
+            {
+                /*color: #fff;*/
+                font-size: 0.9em;
+                /*text-decoration: none;
+                text-shadow: 1px 1px 1px rgba(12,12,12,0.875);*/
+            }
+            #main_nav a:link
+                , #main_nav a:visited
+            {
+                background: #ddd;
+                background: -moz-linear-gradient(top, #eaeaea, #dadada);
+                background: -webkit-gradient(linear, left top, left bottom,
+                        from(#eaeaea), to(#dadada));
+            }
+/* -----------------------------------------------------------------------------
+ * Definindo CONTEUDO
+ */
+
+/* -----------------------------------------------------------------------------
+ * Definindo CONTROLES FILTRO
+ */
+.filter
+{
+    border-color: #363636;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+    .filter fieldset
+    {
+        margin: 0;
+        padding: 4px 4px 2px 4px;
+        overflow: hidden;
+        width: 90%;
+    }
+        .filter legend
+        {
+            border: 0;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            float: left;
+            width: 9%;
+        }
+    .form_filter
+        , .form_filter li
+    {
+        margin: 0;
+        padding: 0;
+        float: left;
+        list-style-type: none;
+    }
+    .form_filter
+    {
+        width: 91%;
+    }
+        .form_filter li
+        {
+            border-left: 1px solid #9c9c9c;
+            padding: 0 10px;
+            width: auto;
+            height: 100%;
+        }
+        .form_filter label
+        {
+            line-height: 1.5;
+        }
+        .form_filter input[type=text]
+        {
+            width: 8em;
+        }
+    .btn_add_registro
+    {
+        background: #cfc;
+        background: -moz-linear-gradient(top, #cfc, #ada);
+        background: -webkit-gradient(linear, left top, left bottom,
+                from(#cfc), to(#ada));
+        border: 1px solid #696;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        padding: 0 5px;
+        line-height: 1.75;
+        font-size: 0.75em;
+        display: block;
+        position: absolute;
+        top: 0.375em;
+        right: 10px;
+    }
+    .btn_add_registro:link
+        , btn_add_registro:visited
+    {
+
+    }
+/* -----------------------------------------------------------------------------
+ * Definindo TABELA VISUALIZACAO
+ */
+.browser
+    , .browser thead
+    , .browser tbody
+    , .browser tfoot
+{
+    border-collapse: collapse;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+    .browser th
+        , .browser td
+    {
+        margin: 0;
+        padding: 2px 1px;
+    }
+    .browser tfoot th
+    {
+        -moz-border-radius: 0 0 0 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        border-radius: 0 0 0 5px;
+    }
+    .browser tfoot td
+    {
+        -moz-border-radius: 0 0 5px 0;
+        -webkit-border-bottom-right-radius: 5px;
+        border-radius: 0 0 5px 0;
+    }
+/* -----------------------------------------------------------------------------
+ * Definindo CONTROLES FORMULARIO
+ */
+    .form_container
+        , .btn_container
+    {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    .btn_container
+    {
+        padding-left: 22%;
+        overflow: hidden;
+    }
+        .form_container li
+            , .btn_container li
+        {
+            margin: 0;
+            padding: 8px 0;
+            list-style-type: none;
+        }
+        .form_container li
+        {
+            overflow: hidden;
+        }
+            .lbl_text
+                , .frm_field
+                , .grp_radio
+            {
+                float: left;
+            }
+            .frm_field
+                , .grp_radio
+            {
+                width: 78%;
+            }
+            .lbl_text
+            {
+                margin-right: 0.5%;
+                text-align: right;
+                font-weight: 700;
+                width: 21.5%;
+            }
+            span.lbl_text {
+                display: block;
+            }
+            .frm_field {
+                display: block;
+            }
+            .grp_radio
+                , .grp_radio li
+            {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+                .grp_radio li
+                {
+                    float: left;
+                    width: auto;
+                    margin-right: 2.5%
+                }
+        .btn_container li
+        {
+            float: left;
+            width: 50%;
+        }
+        .btn_submit button
+            , .btn_cancel button
+        {
+            margin: 0 auto;
+            padding: 0;
+            cursor: pointer;
+            width: 75%;
+        }
+        .btn_submit button {
+            color: #fc5;
+            background: #f70;
+            background: -moz-linear-gradient(top, #fc5, #f70);
+            background: -webkit-gradient(linear, left top, left bottom,
+                    from(#fc5), to(#f70));
+            border: 1px solid #9c9c9c;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-shadow: 1px 1px 1px rgba(36,36,36,0.875);
+            padding: 6px 0;
+        }
+        .btn_cancel button {
+            color: #033669;
+            border: 0;
+            background: none;
+            padding: 8px 0; /*LEMBRAR DE SOMAR O VALOR DO .BTN_SUBMIT BUTTON*/
+            text-decoration: underline;
+        }

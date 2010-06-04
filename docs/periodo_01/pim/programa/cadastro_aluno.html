@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/reset-min.css' />
+    <link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/base-min.css' />
+    <link rel='stylesheet' type='text/css' media='screen, projection'
+            href='./media/css/layout.css' />
+    <title>Cadastro :: Matem&aacute;tica &amp; Sa&uacute;de</title>
+</head>
+<body>
+    <div id='container'>
+        <div id='header'>
+            <a id='logo_unip' class='logo' href='http://www.unip.br/'>UNIP</a>
+            <h1>Matem&aacute;tica &amp; Sa&uacute;de</h1>
+            <h2>
+                <abbr title='&Iacute;ndice de Massa Corporal'>IMC</abbr> &amp;
+                <abbr title='Rela&ccedil;&atilde;o Cintura-Quadril'>RCQ</abbr>
+            </h2>
+            <ul id='main_nav' class='nav_hor'>
+                <li class='first'>
+                    <a href='./cadastro_turma.html'>Turma</a>
+                </li>
+                <li>
+                    <a href='./cadastro_aluno.html'>Aluno</a>
+                </li>
+                <li>
+                    <a href='./cadastro_avaliacao.html'>Avalia&ccedil;&atilde;o</a>
+                </li>
+                <li class='last'>
+                    <a href='./relatorio.html'>Relat&oacute;rio</a>
+                </li>
+            </ul>
+        </div>
+        <div id='content'>
+            <form method='get' action='./' id='cadastro_aluno'>
+                <fieldset id='grp_aluno'>
+                    <legend id='for_grp_aluno'>Cadastro aluno</legend>
+                    <ul class='form_container'>
+                        <li>
+                            <label for='ipt_nome_aluno'
+                                    class='lbl_text'>Nome:</label>
+                            <span class='frm_field'>
+                                <input type='text' size='16' maxlength='64'
+                                        id='ipt_nome_aluno' name='nm_aluno' />
+                            </span>
+                        </li>
+                        <li>
+                            <span class='lbl_text'>G&ecirc;nero:</span>
+                            <ul class='grp_radio'>
+                                <li>
+                                    <input type='radio' id='ipt_masculino'
+                                            name='cd_genero' class='' />
+                                    <label for='ipt_masculino'
+                                            class='lbl_radio'>Masculino</label>
+                                </li>
+                                <li>
+                                    <input type='radio' id='ipt_feminino'
+                                            name='cd_genero' class='' />
+                                    <label for='ipt_feminino'
+                                            class='lbl_radio'>Feminino</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label for='ipt_dt_nascimento'
+                                    class='lbl_text'>Data nascimento:</label>
+                            <span class='frm_field'>
+                                <input type='text' size='16' maxlength='10'
+                                        id='ipt_dt_nascimento' name='dt_nascimento' />
+                            </span>
+                        </li>
+                        <li>
+                            <label for='sel_turma'
+                                    class='lbl_text'>Turma:</label>
+                            <span class='frm_field'>
+                                <select id='sel_turma' name='cd_turma'>
+                                </select>
+                            </span>
+                        </li>
+                    </ul>
+                </fieldset>
+                <ul class='btn_container'>
+                    <li class='btn_submit'>
+                        <button type='submit'>Adicionar</button>
+                    </li>
+                    <li class='btn_cancel'>
+                        <button type='button'>Cancelar</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div id='footer'>
+        </div>
+    </div>
+</body>
+</html>
