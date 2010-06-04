@@ -66,6 +66,14 @@
                 <a href='#' class='btn_add_registro'>+ Novo</a>
             </div>
             <table summary='Registro das turmas cadastradas' class='browser'>
+                <col id='codigo_turma' width='10%'/>
+                <col id='nome_turma' width='50%' />
+                <col id='periodo_turma' width='20%'/>
+                <col id='aluno_turma' width='10%' />
+                <colgroup id='controles'>
+                    <col id='editar_turma' width='5%' />
+                    <col id='apagar_turma' width='5%' />
+                </colgroup>
                 <thead>
                     <tr>
                         <th scope='col'>C&oacute;digo</th>
@@ -81,8 +89,9 @@
                         <td colspan='5'>&nbsp;</td>
                     </tr>
                 </tfoot>
+                <tbody id='turma_registro'></tbody>
             </table>
-            <form method='get' action='.' id='cadastro_turma'>
+            <form method='get' action='.' id='turma_cadastro'>
                 <fieldset id='grp_turma'>
                     <legend id='for_grp_turma'>Cadastro turma</legend>
                     <ul class='form_container'>
@@ -112,7 +121,7 @@
                 </fieldset>
                 <ul class='btn_container'>
                     <li class='btn_submit'>
-                        <button type='submit'>Adicionar</button>
+                        <button type='submit'>Salvar</button>
                     </li>
                     <li class='btn_cancel'>
                         <button type='button'>Cancelar</button>
@@ -123,5 +132,13 @@
         <div id='footer'>
         </div>
     </div>
+    <script tye='text/javascript'
+        src='./media/javascript/mootools-1.2.4-core-nc.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/mootools-1.2.4.4-more.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/jStorage/jstorage.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/cadastros.js'></script>
 </body>
 </html>

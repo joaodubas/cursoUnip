@@ -163,10 +163,8 @@ fieldset
                 , #main_nav a:hover
                 , #main_nav a:active
             {
-                /*color: #fff;*/
                 font-size: 0.9em;
-                /*text-decoration: none;
-                text-shadow: 1px 1px 1px rgba(12,12,12,0.875);*/
+                text-shadow: 1px 1px 1px rgba(256,256,256,0.875);
             }
             #main_nav a:link
                 , #main_nav a:visited
@@ -256,10 +254,13 @@ fieldset
         right: 10px;
     }
     .btn_add_registro:link
-        , btn_add_registro:visited
+        , .btn_add_registro:visited
+        , .btn_add_registro:hover
     {
-
+        color: #363;
+        text-shadow: 1px 1px 1px rgba(256,256,256,0.875);
     }
+
 /* -----------------------------------------------------------------------------
  * Definindo TABELA VISUALIZACAO
  */
@@ -277,20 +278,9 @@ fieldset
     .browser th
         , .browser td
     {
+        border: 1px solid #363636;
         margin: 0;
         padding: 2px 1px;
-    }
-    .browser tfoot th
-    {
-        -moz-border-radius: 0 0 0 5px;
-        -webkit-border-bottom-left-radius: 5px;
-        border-radius: 0 0 0 5px;
-    }
-    .browser tfoot td
-    {
-        -moz-border-radius: 0 0 5px 0;
-        -webkit-border-bottom-right-radius: 5px;
-        border-radius: 0 0 5px 0;
     }
 /* -----------------------------------------------------------------------------
  * Definindo CONTROLES FORMULARIO
