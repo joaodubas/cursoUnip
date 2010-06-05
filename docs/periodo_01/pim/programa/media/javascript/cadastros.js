@@ -1,7 +1,24 @@
-var CADASTRO_TURMA = 1
-    , CADASTRO_ALUNO = 2
-    , CADASTRO_AVALIACAO = 3
-    ;
+var CADASTRO =
+{
+    cadastro_turma:
+    {
+        formulario: 'turma_cadastro'
+        , filtro: 'turma_filtro'
+        , tabela: 'turma_registro'
+    }
+    , cadastro_aluno:
+    {
+        formulario: 'aluno_cadastro'
+        , filtro: 'aluno_filtro'
+        , tabela: 'aluno_registro'
+    }
+    , cadastro_avaliacao:
+    {
+        formulario: 'avaliacao_cadastro'
+        , filtro: 'avaliacao_filtro'
+        , tabela
+    }
+};
 var RegistroTable = new Class({
     Implements: [Options]
     , options: {
@@ -26,6 +43,22 @@ var RegistroTable = new Class({
         return false;
     }
 });
+
+/**
+ * Obtem o nome da pagina atual
+ */
+function getArquivo() {
+    var endereco = window.location
+    , path = []
+    , arquivo = ''
+    ;
+
+    path = endereco.pathname.split('/');
+    arquivo = path[path.length - 1];
+    arquivo = arquivo.substring(0, arquivo.indexOf('.'));
+
+    return arquivo;
+}
 
 window.addEvent('domready', function () {
     var frm_flt_turma = $('filtro_turma')       //form de filtro de turma
