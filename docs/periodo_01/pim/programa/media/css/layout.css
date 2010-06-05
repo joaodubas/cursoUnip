@@ -45,6 +45,23 @@ fieldset
         width: 102.5%;
     }
 /* -----------------------------------------------------------------------------
+ * Definindo BODY ID
+ */
+#turma #lnk_turma
+    , #aluno #lnk_aluno
+    , #avaliacao #lnk_avaliacao
+    , #relatorio #lnk_relatorio
+{
+    color: #ddd;
+    background: #fff;
+    background: -moz-linear-gradient(top, #fff, #bbb);
+    background: -webkit-gradient(linear, left top, left bottom,
+            from(#fff), to(#aaa));
+    text-shadow: 1px 1px 1px #555;
+    pointer-events: none;
+    cursor: default;
+}
+/* -----------------------------------------------------------------------------
  * Definindo CONTAINER
  */
 #container
@@ -56,7 +73,6 @@ fieldset
     padding: 0 2.5%;
     width: 80%;
 }
-
 /* -----------------------------------------------------------------------------
  * Definindo CABECALHO, CONTEUDO E RODAPE
  */
@@ -67,7 +83,6 @@ fieldset
         position: relative;
         overflow: hidden;
     }
-
 /* -----------------------------------------------------------------------------
  * Definindo CABECALHO
  */
