@@ -80,7 +80,7 @@ fieldset
         , #content
         , #footer
     {
-        position: relative;
+        /*position: relative;*/
         overflow: hidden;
     }
 /* -----------------------------------------------------------------------------
@@ -88,6 +88,7 @@ fieldset
  */
 #header
 {
+    position: relative;
     height: 100px;
 }
     #logo_unip
@@ -300,6 +301,34 @@ fieldset
 /* -----------------------------------------------------------------------------
  * Definindo CONTROLES FORMULARIO
  */
+.exibir
+{
+    display: block;
+}
+.esconder
+{
+    display: none;
+}
+.form_modal
+{
+    background: rgba(145,145,145,0.5);
+    border: 1px solid #363636;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin: 0 15%;
+    padding: 1% 1%;
+    width: 68%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+    .form_modal form
+    {
+        border: 1px solid #363636;
+        background: #fff;
+        padding: 0.75%;
+    }
     .form_container
         , .btn_container
     {
