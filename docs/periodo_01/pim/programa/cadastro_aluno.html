@@ -23,7 +23,7 @@
             </h2>
             <ul id='main_nav' class='nav_hor'>
                 <li class='first'>
-                    <a id='lnk_turma'href='./cadastro_turma.html'>Turma</a>
+                    <a id='lnk_turma' href='./cadastro_turma.html'>Turma</a>
                 </li>
                 <li>
                     <a id='lnk_aluno' href='./cadastro_aluno.html'>Aluno</a>
@@ -38,7 +38,6 @@
                 </li>
             </ul>
         </div>
-        <div id='content'>
         <div id='content'>
             <div class='filter'>
                 <form method='get' action='.' id='aluno_filtro'>
@@ -72,10 +71,8 @@
                 <col id='idade_aluno' width='10%'/>
                 <col id='genero_aluno' width='15%' />
                 <col id='avaliacao_aluno' width='15%' />
-                <colgroup id='controles'>
-                    <col id='editar_turma' width='5%' />
-                    <col id='apagar_turma' width='5%' />
-                </colgroup>
+                <col id='editar_turma' width='5%' />
+                <col id='apagar_turma' width='5%' />
                 <thead>
                     <tr>
                         <th scope='col'>C&oacute;digo</th>
@@ -98,66 +95,69 @@
                     </tr>
                 </tbody>
             </table>
-            <form method='get' action='./' id='aluno_cadastro'>
-                <fieldset id='grp_aluno'>
-                    <legend id='for_grp_aluno'>Cadastro aluno</legend>
-                    <ul class='form_container'>
-                        <li>
-                            <label for='ipt_nome_aluno'
-                                    class='lbl_text'>Nome:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='64'
-                                        id='ipt_nome_aluno' name='nm_aluno' />
-                            </span>
+            <div class='form_modal'>
+                <form method='get' action='./' id='aluno_cadastro'>
+                    <fieldset id='grp_aluno'>
+                        <legend id='for_grp_aluno'>Cadastro aluno</legend>
+                        <ul class='form_container'>
+                            <li>
+                                <label for='ipt_nome_aluno'
+                                        class='lbl_text'>Nome:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='64'
+                                            id='ipt_nome_aluno' name='nm_aluno' />
+                                </span>
+                            </li>
+                            <li>
+                                <span class='lbl_text'>G&ecirc;nero:</span>
+                                <ul class='grp_radio'>
+                                    <li>
+                                        <input type='radio' id='ipt_masculino'
+                                                name='cd_genero' class='' />
+                                        <label for='ipt_masculino'
+                                                class='lbl_radio'>Masculino</label>
+                                    </li>
+                                    <li>
+                                        <input type='radio' id='ipt_feminino'
+                                                name='cd_genero' class='' />
+                                        <label for='ipt_feminino'
+                                                class='lbl_radio'>Feminino</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <label for='ipt_dt_nascimento'
+                                        class='lbl_text'>Data nascimento:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='10'
+                                            id='ipt_dt_nascimento' name='dt_nascimento' />
+                                </span>
+                            </li>
+                            <li>
+                                <label for='sel_turma'
+                                        class='lbl_text'>Turma:</label>
+                                <span class='frm_field'>
+                                    <select id='sel_turma' name='cd_turma'>
+                                        <option value='#'>Selecione uma turma</option>
+                                    </select>
+                                </span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <ul class='btn_container'>
+                        <li class='btn_submit'>
+                            <button type='submit'>Salvar</button>
                         </li>
-                        <li>
-                            <span class='lbl_text'>G&ecirc;nero:</span>
-                            <ul class='grp_radio'>
-                                <li>
-                                    <input type='radio' id='ipt_masculino'
-                                            name='cd_genero' class='' />
-                                    <label for='ipt_masculino'
-                                            class='lbl_radio'>Masculino</label>
-                                </li>
-                                <li>
-                                    <input type='radio' id='ipt_feminino'
-                                            name='cd_genero' class='' />
-                                    <label for='ipt_feminino'
-                                            class='lbl_radio'>Feminino</label>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <label for='ipt_dt_nascimento'
-                                    class='lbl_text'>Data nascimento:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='10'
-                                        id='ipt_dt_nascimento' name='dt_nascimento' />
-                            </span>
-                        </li>
-                        <li>
-                            <label for='sel_turma'
-                                    class='lbl_text'>Turma:</label>
-                            <span class='frm_field'>
-                                <select id='sel_turma' name='cd_turma'>
-                                </select>
-                            </span>
+                        <li class='btn_cancel'>
+                            <button type='reset'>Cancelar</button>
                         </li>
                     </ul>
-                </fieldset>
-                <ul class='btn_container'>
-                    <li class='btn_submit'>
-                        <button type='submit'>Salvar</button>
-                    </li>
-                    <li class='btn_cancel'>
-                        <button type='button'>Cancelar</button>
-                    </li>
-                </ul>
-            </form>
+                </form>
+            </div>
         </div>
         <div id='footer'>
         </div>
-    <script tye='text/javascript'
+    <script type='text/javascript'
         src='./media/javascript/mootools-1.2.4-core-nc.js'></script>
     <script type='text/javascript'
         src='./media/javascript/mootools-1.2.4.4-more.js'></script>

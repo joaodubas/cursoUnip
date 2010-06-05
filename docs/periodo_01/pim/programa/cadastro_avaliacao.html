@@ -23,7 +23,7 @@
             </h2>
             <ul id='main_nav' class='nav_hor'>
                 <li class='first'>
-                    <a id='lnk_turma'href='./cadastro_turma.html'>Turma</a>
+                    <a id='lnk_turma' href='./cadastro_turma.html'>Turma</a>
                 </li>
                 <li>
                     <a id='lnk_aluno' href='./cadastro_aluno.html'>Aluno</a>
@@ -69,10 +69,8 @@
                 <col id='valor_cqd' width='10%'/>
                 <col id='valor_rcq' width='7.5%' />
                 <col id='classificacao_rcq' width='10%' />
-                <colgroup id='controles'>
-                    <col id='editar_turma' width='5%' />
-                    <col id='apagar_turma' width='5%' />
-                </colgroup>
+                <col id='editar_turma' width='5%' />
+                <col id='apagar_turma' width='5%' />
                 <thead>
                     <tr>
                         <th scope='col'>C&oacute;digo</th>
@@ -102,100 +100,112 @@
                         <td colspan='11'>&nbsp;</td>
                     </tr>
                 </tfoot>
-                <tbody id='aluno_registro'>
+                <tbody id='avaliacao_registro'>
                     <tr>
                         <th colspan='12'>Nenhum registro</th>
                     </tr>
                 </tbody>
             </table>
-            <form method='get' action='./' id='cadastro_avaliacao'>
-                <fieldset id='grp_avaliacao'>
-                    <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
-                    <ul class='form_container'>
-                        <li>
-                            <label for='sel_turma'
-                                    class='lbl_text'>Turma:</label>
-                            <span class='frm_field'>
-                                <select id='sel_turma' name='cd_turma'>
-                                </select>
-                            </span>
+            <div class='form_modal'>
+                <form method='get' action='./' id='avaliacao_cadastro'>
+                    <fieldset id='grp_avaliacao'>
+                        <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
+                        <ul class='form_container'>
+                            <li>
+                                <label for='sel_turma'
+                                        class='lbl_text'>Turma:</label>
+                                <span class='frm_field'>
+                                    <select id='sel_turma' name='cd_turma'>
+                                        <option value='#'>Selecione uma turma</option>
+                                    </select>
+                                </span>
+                            </li>
+                            <li>
+                                <label for='sel_aluno'
+                                        class='lbl_text'>Aluno:</label>
+                                <span class='frm_field'>
+                                    <select id='sel_aluno' name='cd_aluno'>
+                                        <option value='#'>Selecione um aluno</option>
+                                    </select>
+                                </span>
+                            </li>
+                            <li>
+                                <label for='ipt_dt_avaliacao'
+                                        class='lbl_text'>Data avalia&ccedil;&atilde;o:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='10'
+                                            id='ipt_dt_avaliacao' name='dt_avaliacao' />
+                                </span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset id='grp_antropometria'>
+                        <legend id='for_grp_antropometria'>Antropometria</legend>
+                        <ul class='form_container'>
+                            <li>
+                                <label for='ipt_massa'
+                                        class='lbl_text'>Massa corporal:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='8'
+                                            id='ipt_massa' name='nr_massa' />
+                                    (kg)
+                                </span>
+                            </li>
+                            <li>
+                                <label for='ipt_estatura'
+                                        class='lbl_text'>Estatura:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='6'
+                                            id='ipt_estatura' name='nr_estatura' />
+                                    (cm)
+                                </span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset id='grp_circunferencia'>
+                        <legend id='for_grp_circunferencia'>Circunfer&ecirc;ncia</legend>
+                        <ul class='form_container'>
+                            <li>
+                                <label for='ipt_cintura'
+                                        class='lbl_text'>Cintura:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='6'
+                                            id='ipt_cintura' name='nr_cct' />
+                                    (cm)
+                                </span>
+                            </li>
+                            <li>
+                                <label for='ipt_quadril'
+                                        class='lbl_text'>Quadril:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='6'
+                                            id='ipt_quadril' name='nr_cqd' />
+                                    (cm)
+                                </span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <ul class='btn_container'>
+                        <li class='btn_submit'>
+                            <button type='submit'>Salvar</button>
                         </li>
-                        <li>
-                            <label for='sel_aluno'
-                                    class='lbl_text'>Aluno:</label>
-                            <span class='frm_field'>
-                                <select id='sel_aluno' name='cd_aluno'>
-                                </select>
-                            </span>
-                        </li>
-                        <li>
-                            <label for='ipt_dt_avaliacao'
-                                    class='lbl_text'>Data avalia&ccedil;&atilde;o:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='10'
-                                        id='ipt_dt_avaliacao' name='dt_avaliacao' />
-                            </span>
+                        <li class='btn_cancel'>
+                            <button type='reset'>Cancelar</button>
                         </li>
                     </ul>
-                </fieldset>
-                <fieldset id='grp_antropometria'>
-                    <legend id='for_grp_antropometria'>Antropometria</legend>
-                    <ul class='form_container'>
-                        <li>
-                            <label for='ipt_massa'
-                                    class='lbl_text'>Massa corporal:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='8'
-                                        id='ipt_massa' name='nr_massa' />
-                                (kg)
-                            </span>
-                        </li>
-                        <li>
-                            <label for='ipt_estatura'
-                                    class='lbl_text'>Estatura:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='6'
-                                        id='ipt_estatura' name='nr_estatura' />
-                                (cm)
-                            </span>
-                        </li>
-                    </ul>
-                </fieldset>
-                <fieldset id='grp_circunferencia'>
-                    <legend id='for_grp_circunferencia'>Circunfer&ecirc;ncia</legend>
-                    <ul class='form_container'>
-                        <li>
-                            <label for='ipt_cintura'
-                                    class='lbl_text'>Cintura:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='6'
-                                        id='ipt_cintura' name='nr_cct' />
-                                (cm)
-                            </span>
-                        </li>
-                        <li>
-                            <label for='ipt_quadril'
-                                    class='lbl_text'>Quadril:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='6'
-                                        id='ipt_quadril' name='nr_cqd' />
-                                (cm)
-                            </span>
-                        </li>
-                    </ul>
-                </fieldset>
-                <ul class='btn_container'>
-                    <li class='btn_submit'>
-                        <button type='submit'>Salvar</button>
-                    </li>
-                    <li class='btn_cancel'>
-                        <button type='button'>Cancelar</button>
-                    </li>
-                </ul>
-            </form>
+                </form>
+            </div>
         </div>
         <div id='footer'>
         </div>
     </div>
+    <script type='text/javascript'
+        src='./media/javascript/mootools-1.2.4-core-nc.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/mootools-1.2.4.4-more.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/jStorage/jstorage.js'></script>
+    <script type='text/javascript'
+        src='./media/javascript/cadastros.js'></script>
 </body>
 </html>

@@ -23,7 +23,7 @@
             </h2>
             <ul id='main_nav' class='nav_hor'>
                 <li class='first'>
-                    <a id='lnk_turma'href='./cadastro_turma.html'>Turma</a>
+                    <a id='lnk_turma' href='./cadastro_turma.html'>Turma</a>
                 </li>
                 <li>
                     <a id='lnk_aluno' href='./cadastro_aluno.html'>Aluno</a>
@@ -72,10 +72,8 @@
                 <col id='nome_turma' width='50%' />
                 <col id='periodo_turma' width='20%'/>
                 <col id='aluno_turma' width='10%' />
-                <colgroup id='controles'>
-                    <col id='editar_turma' width='5%' />
-                    <col id='apagar_turma' width='5%' />
-                </colgroup>
+                <col id='editar_turma' width='5%' />
+                <col id='apagar_turma' width='5%' />
                 <thead>
                     <tr>
                         <th scope='col'>C&oacute;digo</th>
@@ -97,48 +95,50 @@
                     </tr>
                 </tbody>
             </table>
-            <form method='get' action='.' id='turma_cadastro'>
-                <fieldset id='grp_turma'>
-                    <legend id='for_grp_turma'>Cadastro turma</legend>
-                    <ul class='form_container'>
-                        <li>
-                            <label for='ipt_nome_turma'
-                                    class='lbl_text'>Nome:</label>
-                            <span class='frm_field'>
-                                <input type='text' size='16' maxlength='64'
-                                        id='ipt_nome_turma' name='nm_turma' />
-                            </span>
+            <div class='form_modal'>
+                <form method='get' action='.' id='turma_cadastro'>
+                    <fieldset id='grp_turma'>
+                        <legend id='for_grp_turma'>Cadastro turma</legend>
+                        <ul class='form_container'>
+                            <li>
+                                <label for='ipt_nome_turma'
+                                        class='lbl_text'>Nome:</label>
+                                <span class='frm_field'>
+                                    <input type='text' size='16' maxlength='64'
+                                            id='ipt_nome_turma' name='nm_turma' />
+                                </span>
+                            </li>
+                            <li>
+                                <label for='sel_periodo_turma'
+                                        class='lbl_text'>Per&iacute;odo:</label>
+                                <span class='frm_field'>
+                                    <select id='sel_periodo_turma' name='cd_periodo'>
+                                        <optgroup label='Selecione um per&iacute;odo'>
+                                            <option value='1'>Matutino</option>
+                                            <option value='2'>Vespertino</option>
+                                            <option value='3'>Noturno</option>
+                                            <option value='4'>Integral</option>
+                                        </optgroup>
+                                    </select>
+                                </span>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <ul class='btn_container'>
+                        <li class='btn_submit'>
+                            <button type='submit'>Salvar</button>
                         </li>
-                        <li>
-                            <label for='sel_periodo_turma'
-                                    class='lbl_text'>Per&iacute;odo:</label>
-                            <span class='frm_field'>
-                                <select id='sel_periodo_turma' name='cd_periodo'>
-                                    <optgroup label='Selecione um per&iacute;odo'>
-                                        <option value='1'>Matutino</option>
-                                        <option value='2'>Vespertino</option>
-                                        <option value='3'>Noturno</option>
-                                        <option value='4'>Integral</option>
-                                    </optgroup>
-                                </select>
-                            </span>
+                        <li class='btn_cancel'>
+                            <button type='reset'>Cancelar</button>
                         </li>
                     </ul>
-                </fieldset>
-                <ul class='btn_container'>
-                    <li class='btn_submit'>
-                        <button type='submit'>Salvar</button>
-                    </li>
-                    <li class='btn_cancel'>
-                        <button type='button'>Cancelar</button>
-                    </li>
-                </ul>
-            </form>
+                </form>
+            </div>
         </div>
         <div id='footer'>
         </div>
     </div>
-    <script tye='text/javascript'
+    <script type='text/javascript'
         src='./media/javascript/mootools-1.2.4-core-nc.js'></script>
     <script type='text/javascript'
         src='./media/javascript/mootools-1.2.4.4-more.js'></script>
