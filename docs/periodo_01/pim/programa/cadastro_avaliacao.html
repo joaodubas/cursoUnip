@@ -37,6 +37,75 @@
             </ul>
         </div>
         <div id='content'>
+            <div class='filter'>
+                <form method='get' action='.' id='filtro_turma'>
+                    <fieldset id='grp_filtro'>
+                        <legend id='for_grp_filtro'>Filtros</legend>
+                        <ul class='form_filter'>
+                            <li>
+                                <label for='filter_data_inicio'>Data</label>
+                                <input type='text' id='filter_data_inicio'
+                                        class='filter_txt' name='flt_data_inicio'
+                                        maxlength='10' size='8' />
+                                <input type='text' id='filter_data_fim'
+                                        class='filter_txt' name='flt_data_fim'
+                                        maxlength='10' size='8' />
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+                <a href='#' class='btn_add_registro'>+ Novo</a>
+            </div>
+            <table summary='Registro dos alunos cadastrados' class='browser'>
+                <col id='codigo_avaliacao' width='5%'/>
+                <col id='data_avaliacao' width='10%' />
+                <col id='valor_massa' width='10%' />
+                <col id='valor_estatura' width='10%'/>
+                <col id='valor_imc' width='7.5%' />
+                <col id='classificacao_imc' width='10%' />
+                <col id='valor_cct' width='10%' />
+                <col id='valor_cqd' width='10%'/>
+                <col id='valor_rcq' width='7.5%' />
+                <col id='classificacao_rcq' width='10%' />
+                <colgroup id='controles'>
+                    <col id='editar_turma' width='5%' />
+                    <col id='apagar_turma' width='5%' />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope='col'>C&oacute;digo</th>
+                        <th scope='col'>Data</th>
+                        <th scope='col'>Massa</th>
+                        <th scope='col'>Estatura</th>
+                        <th scope='col'>
+                            <abbr title='&Iacute;ndice de massa corporal'>IMC</abbr>
+                        </th>
+                        <th scope='col'>
+                            <abbr title='Classifica&ccedil;&atilde;o'>Class.</abbr>
+                        </th>
+                        <th scope='col'>Cintura</th>
+                        <th scope='col'>Quadril</th>
+                        <th scope='col'>
+                            <abbr title='Rela&ccedil;&atilde;o cintura/quadril'>RCQ</abbr>
+                        </th>
+                        <th scope='col'>
+                            <abbr title='Classifica&ccedil;&atilde;o'>Class.</abbr>
+                        </th>
+                        <th scope='colgroup' colspan='2'>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th scope='row'>Total</th>
+                        <td colspan='11'>&nbsp;</td>
+                    </tr>
+                </tfoot>
+                <tbody id='aluno_registro'>
+                    <tr>
+                        <th colspan='12'>Nenhum registro</th>
+                    </tr>
+                </tbody>
+            </table>
             <form method='get' action='./' id='cadastro_avaliacao'>
                 <fieldset id='grp_avaliacao'>
                     <legend id='for_grp_avaliacao'>Avalia&ccedil;&atilde;o</legend>
