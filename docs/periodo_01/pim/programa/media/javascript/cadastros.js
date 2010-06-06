@@ -5,18 +5,35 @@ var CADASTRO =
         formulario: 'turma_cadastro'
         , filtro: 'turma_filtro'
         , tabela: 'turma_registro'
+        , mapa: ['ipt_nome_turma'
+            , 'sel_periodo_turma'
+        ]
     }
     , cadastro_aluno:
     {
         formulario: 'aluno_cadastro'
         , filtro: 'aluno_filtro'
         , tabela: 'aluno_registro'
+        , mapa: ['ipt_nome_aluno'
+            , 'ipt_masculino'
+            , 'ipt_feminino'
+            , 'ipt_dt_nascimento'
+            , 'sel_turma'
+        ]
     }
     , cadastro_avaliacao:
     {
         formulario: 'avaliacao_cadastro'
         , filtro: 'avaliacao_filtro'
         , tabela: 'avaliacao_registro'
+        , mapa: ['sel_turma'
+            , 'sel_aluno'
+            , 'ipt_data_avaliacao'
+            , 'ipt_massa'
+            , 'ipt_estatura'
+            , 'ipt_cintura'
+            , 'ipt_quadril'
+        ]
     }
 };
 var RegistroTable = new Class({
@@ -26,18 +43,20 @@ var RegistroTable = new Class({
         , registros: null
     }
     , tabela: null
+    , tabela_corpo: null
     , filtro: null
     , formulario: null
     , modal: null
-    , adicionar: null
+    , botao_adicionar: null
     , initialize: function (options) {
         this.setOptions(options);
-        this.tabela = $(this.options.tipo['tabela']);
+        this.tabela = new HtmlTable($$('.browser')[0]);
+        this.tabela_corpo = $(this.options.tipo['tabela']);
         this.filtro = $(this.options.tipo['filtro']);
         this.formulario = $(this.options.tipo['formulario']);
         this.modal = this.formulario.getParent();
         this.modal.addClass('esconder');
-        this.adicionar = $$('.btn_add_registro');
+        this.botao_adicionar = $$('.btn_add_registro');
         this.adicionarControle();
     }
     , adicionarControle: function () {
@@ -46,6 +65,7 @@ var RegistroTable = new Class({
             , viewPort = null
             , topPos = 0
             ;
+        //adiciona os eventos submit e reset ao formulario principal
         this.formulario.addEvents({
             'submit': function (event) {
                 event.preventDefault();
@@ -58,12 +78,18 @@ var RegistroTable = new Class({
                 modal.addClass('esconder');
             }
         });
-        this.tabela.addEvent('click:relay(a)', function (event, element) {
+        //adiciona os eventos de edicao e delecao de regitro aos links da tabela
+        this.tabela_corpo.addEvent('click:relay(a)', function (event, element) {
             event.preventDefault();
-            alert('Nao implementado!');
+            if (this.hasClass('editar')) {
+                
+            } else if (this.hasClass('apagar')) {
+                
+            }
+            alert('Nao implementado! ' + this.className);
             return false;
         });
-        this.adicionar.addEvent('click', function (event) {
+        this.botao_adicionar.addEvent('click', function (event) {
             event.preventDefault();
             if (!modal.hasClass('exibir')) {
                 modal.removeClass('esconder');
