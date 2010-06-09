@@ -299,6 +299,10 @@ fieldset
         margin: 0;
         padding: 2px 1px;
     }
+        tbody
+        {
+            text-align: center;
+        }
 /* -----------------------------------------------------------------------------
  * Definindo CONTROLES FORMULARIO
  */
