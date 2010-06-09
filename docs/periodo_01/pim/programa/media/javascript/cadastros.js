@@ -123,6 +123,7 @@ var RegistroTable = new Class({
         var id = this.options.registros.length
             , form_field = null
             , registro = new Hash();
+            , tipo = $this.options.tipo.tipo
         ;
         this.options.tipo.mapa.each(function (value, index) {
             form_field = $(value);
@@ -135,7 +136,7 @@ var RegistroTable = new Class({
         });
         this.options.registros.push(registro);
         $.jStorage.set('classes', this.options.registros);
-        alert($.jStorage.get('classes'));
+        
         return false;
     }
     , atualizarRegistro: function () {
@@ -148,29 +149,57 @@ var RegistroTable = new Class({
         return false;
     }
     , popularBrowser: function () {
-        var registro = this.options.registros
+        var self = this
+            , ha_sem_registro = false
+            , registro = this.options.registros
             , numero_celulas = $(this.tabela).tHead.rows[0].cells.length + 1
             , tipo = this.options.tipo.tipo
+            , nome_turma = nome_aluno = ''
         ;
         if ($defined(registro[0])) {
             registro.each(function (turma) {
                 if (tipo == 0) {
-                    this.tabela.push([]);
-                } else {
-                    this.table.push([]);
+                    self.registro_atual = turma;
+                    self.inserirLinhaBrowser();
+                } else if ($defined(turma.alunos)) {
+                    nome_turma = turma.nm_turma;
+                    self.tabela.push([{content: nome_turma
+                        , properties: {
+                            colspan: numero_celulas
+                        }
+                    }]);
                     turma.alunos.each(function (aluno) {
                         if (tipo == 1) {
-                            this.tabela.push([]);
-                        } else {
-                            this.tabela.push([]);
+                            self.registro_atual = aluno;
+                            self.inserirLinhaBrowser();
+                        } else if ($defined(aluno.avaliacoes)) {
+                            nome_aluno = aluno.nm_aluno;
+                            self.tabela.push([{content: nome_aluno
+                                , properties: {
+                                    colspan: numero_celulas
+                                }
+                            }]);
                             aluno.avaliacoes.each(function (avaliacao) {
-                                this.tabela.push([]);
+                                self.registro_atual = avaliacao;
+                                self.inserirLinhaBrowser();
                             });
+                        } else {
+                            self.inserirSemRegistro(numero_celulas, ha_sem_registro);
+                            ha_sem_registro = true;
                         }
                     });
+                } else {
+                    self.inserirSemRegistro(numero_celulas, ha_sem_registro);
+                    ha_sem_registro = true;
                 }
             });
         } else {
+            self.inserirSemRegistro(numero_celulas, false);
+        }
+        return false;
+    }
+    , inserirSemRegistro: function (numero_celulas, ha_sem_registro) {
+        if (!ha_sem_registro) {
             new Element('th', {
                 'scope': 'row'
                 , 'html': 'Nenhum Registro'
@@ -180,7 +209,70 @@ var RegistroTable = new Class({
         return false;
     }
     , inserirLinhaBrowser: function () {
+        registro = this.registro_atual;
+        tipo_cadastro = this.options.tipo.tipo;
+        switch (tipo_cadastro) {
+            case 0:
+                this.inserirLinhaTurma(registro);
+                break;
+            case 1:
+                this.inserirLinhaAluno(registro);
+                break;
+            case 2:
+                this.inserirLinhaAvaliacao(registro);
+                break;
+        }
         return false;
+    }
+    , inserirLinhaTurma: function (registro) {
+        var periodos = ['Matutino', 'Vespertino', 'Noturno', 'Integral']
+            , id_turma = registro.nr_id_turma
+            , nome_turma = registro.nm_turma
+            , periodo_turma = periodos[registro.cd_periodo - 1]
+            , numero_alunos = $chk(registro.alunos) ? registro.alunos.length : 0
+        ;
+        this.tabela.push([
+            new Element('a', {
+                'href': '#'
+                , 'id': 'editar|' + id_turma
+                , 'class': 'editar'
+                , 'html': id_turma
+            })
+            , nome_turma
+            , periodo_turma
+            , String(numero_alunos)
+            , new Element('a', {
+                'href': '#'
+                , 'id': 'editar|' + id_turma
+                , 'class': 'editar'
+                , 'html': 'Editar'
+            })
+            , new Element('a', {
+                'href': '#'
+                , 'id': 'apagar|' + id_turma
+                , 'class': 'apagar'
+                , 'html': 'Apagar'
+            })
+        ]);
+        return false;
+    }
+    , inserirLinhaAluno: function () {
+        return false;
+    }
+    , inserirLinhaAvaliacao: function () {
+        return false;
+    }
+    , criarLinkControle: function (tipo_link, id_link, texto_link) {
+        if (!$chk(texto_link)) {
+            texto_link = tipo_link == 1 ? 'Editar' : 'Apagar';
+        }
+        elemento = new Element('a', {
+            'href': '#'
+            , 'id': id_link
+            , 'class': tipo_link == 1 ? 'editar' : 'apagar'
+            , 'html': texto_link
+        });
+        return elemento;
     }
 });
 
@@ -210,70 +302,3 @@ window.addEvent('domready', function () {
     ;
 });
 
-registros = [
-    {'nm_turma': 'Classe de teste'
-        , 'cd_periodo': 1
-        , 'alunos': [
-            {'nm_aluno': 'Joao Paulo Dubas'
-                , 'cd_genero': 1
-                , 'dt_nascimento': '15/12/1978'
-                , 'avaliacoes': [
-                    {'dt_avaliacao': '08/12/2008'
-                        , 'nr_massa': 84
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 95
-                        , 'nr_cqd': 105
-                    }
-                    , {'dt_avaliacao': '08/06/2009'
-                        , 'nr_massa': 87
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 98
-                        , 'nr_cqd': 109
-                    }
-                    , {'dt_avaliacao': '08/12/2009'
-                        , 'nr_massa': 85
-                        , 'nr_estatura': 167.5
-                        , 'nr_cct': 96
-                        , 'nr_cqd': 110
-                    }
-                    , {'dt_avaliacao': '08/06/2009'
-                        , 'nr_massa': 84
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 94
-                        , 'nr_cqd': 106
-                    }
-                ]
-            }
-            , {'nm_aluno': 'Claudio Eduardo Dubas'
-                , 'cd_genero': 1
-                , 'dt_nascimento': '13/02/1980'
-                , 'avaliacoes': [
-                    {'dt_avaliacao': '08/12/2008'
-                        , 'nr_massa': 84
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 95
-                        , 'nr_cqd': 105
-                    }
-                    , {'dt_avaliacao': '08/06/2009'
-                        , 'nr_massa': 87
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 98
-                        , 'nr_cqd': 109
-                    }
-                    , {'dt_avaliacao': '08/12/2009'
-                        , 'nr_massa': 85
-                        , 'nr_estatura': 167.5
-                        , 'nr_cct': 96
-                        , 'nr_cqd': 110
-                    }
-                    , {'dt_avaliacao': '08/06/2009'
-                        , 'nr_massa': 84
-                        , 'nr_estatura': 168
-                        , 'nr_cct': 94
-                        , 'nr_cqd': 106
-                    }
-                ]
-            }
-        ]
-    }
-];
