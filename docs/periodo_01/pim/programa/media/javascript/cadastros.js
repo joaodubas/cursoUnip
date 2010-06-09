@@ -97,10 +97,11 @@ var RegistroTable = new Class({
         //adiciona os eventos de edicao e delecao de regitro aos links da tabela
         this.tabela_corpo.addEvent('click:relay(a)', function (event, element) {
             event.preventDefault();
+            var id = this.getProperty('id');
             if (this.hasClass('editar')) {
-                self.editarRegistro();
+                self.editarRegistro(this);
             } else if (this.hasClass('apagar')) {
-                self.removerRegistro();
+                self.removerRegistro(this);
             }
             return false;
         });
@@ -120,11 +121,28 @@ var RegistroTable = new Class({
         return false;
     }
     , adicionarRegistro: function () {
-        var id = this.options.registros.length
+        var id = 0
             , form_field = null
-            , registro = new Hash();
-            , tipo = $this.options.tipo.tipo
+            , registro = new Hash()
+            , tipo = this.options.tipo.tipo
+            , propriedade_container = ''
         ;
+        switch (tipo) {
+            case 0:
+                id = this.options.registros.length;
+                propriedade_container = 'alunos';
+                break;
+            case 1:
+                id = this.options.registros[$('sel_turma').value]
+                    .alunos.length;
+                propriedade_container = 'avaliacoes';
+                break;
+            case 2:
+                id = this.options.registros[$('sel_turma').value]
+                    .alunos[$('sel_aluno').value]
+                    .avaliacoes.length;
+                break;
+        }
         this.options.tipo.mapa.each(function (value, index) {
             form_field = $(value);
             if (index == 0) {
@@ -134,18 +152,58 @@ var RegistroTable = new Class({
             }
             form_field.value = '';
         });
+        if (tipo < 3) {
+            registro.set(propriedade_container, []);
+        } else {
+        }
         this.options.registros.push(registro);
         $.jStorage.set('classes', this.options.registros);
-        
+        this.registro_atual = registro;
+        this.inserirLinhaBrowser();
+
         return false;
     }
     , atualizarRegistro: function () {
         return false;
     }
-    , removerRegistro: function () {
+    , removerRegistro: function (target) {
+        var id_lista = target.getProperty('id').split('|')
+            , targetParent = target.getParent('tr').dispose()
+            , listaObjetos = []
+            , objeto = {}
+            , id = 0
+            , id_objeto = ''
+        ;
+        switch (id_lista.length) {
+            case 2: //TURMA
+                listaObjetos = this.options.registros;
+                id_objeto = 'nr_id_turma';
+                break;
+            case 3: //ALUNO
+                listaObjetos = this.options.registros[id_lista[1]]
+                    .alunos;
+                id_objeto = 'nr_id_aluno';
+                break;
+            case 4: //AVALIACAO
+                listaObjetos = this.options.registros[id_lista[1]]
+                    .alunos[id_lista[2]]
+                    .avaliacoes;
+                id_objeto = 'nr_id_avaliacao';
+                break;
+        }
+        id = id_lista.getLast().toInt();
+        objeto = listaObjetos[id];
+        listaObjetos.erase(objeto);
+        listaObjetos.each(function (value, key) {
+            if (key >= id) {
+                value[id_objeto] -= 1;
+            }
+        });
+        $.jStorage.set('classes', this.options.registros);
+        this.popularBrowser();
         return false;
     }
-    , editarRegistro: function () {
+    , editarRegistro: function (target) {
         return false;
     }
     , popularBrowser: function () {
@@ -156,6 +214,7 @@ var RegistroTable = new Class({
             , tipo = this.options.tipo.tipo
             , nome_turma = nome_aluno = ''
         ;
+        this.tabela.empty();
         if ($defined(registro[0])) {
             registro.each(function (turma) {
                 if (tipo == 0) {
@@ -232,27 +291,12 @@ var RegistroTable = new Class({
             , numero_alunos = $chk(registro.alunos) ? registro.alunos.length : 0
         ;
         this.tabela.push([
-            new Element('a', {
-                'href': '#'
-                , 'id': 'editar|' + id_turma
-                , 'class': 'editar'
-                , 'html': id_turma
-            })
+            this.criarLinkControle(1, 'editar|' + id_turma, String(id_turma))
             , nome_turma
             , periodo_turma
             , String(numero_alunos)
-            , new Element('a', {
-                'href': '#'
-                , 'id': 'editar|' + id_turma
-                , 'class': 'editar'
-                , 'html': 'Editar'
-            })
-            , new Element('a', {
-                'href': '#'
-                , 'id': 'apagar|' + id_turma
-                , 'class': 'apagar'
-                , 'html': 'Apagar'
-            })
+            , this.criarLinkControle(1, 'editar|' + id_turma)
+            , this.criarLinkControle(2, 'apagar|' + id_turma)
         ]);
         return false;
     }
