@@ -12,5 +12,63 @@
             <a href='./docs/periodo_01/pim/programa/cadastro_turma.html'
                     title='PIM Per&iacute;odo 01'>IMC e Sa&uacute;de</a>
         </p>
+        <p id='json_parametro'></p>
+        <script type='text/javascript'
+            src='./docs/periodo_01/pim/programa/media/javascript/mootools-1.2.4-core-nc.js'>
+        </script>
+        <script type='text/javascript'
+            src='./docs/periodo_01/pim/programa/media/javascript/growth_curves.js'>
+        </script>
+        <script type='text/javascript'>
+            var parametro_curva = parametro = []
+                , genero = idade = new Hash()
+                , tmp_bmi = tmp_stat = tmp_wt = []
+                , lms_bmi = lms_stat = lms_wt = new Hash()
+                ;
+            for (var i = 0, j = bmiagerev.length; i < j; i++) {
+                genero = new Hash();
+                genero.set('genero', bmiagerev[i].sex);
+
+                tmp_bmi = bmiagerev[i].parametros;
+                tmp_stat = statage[i].parametros;
+                tmp_wt = wtage[i].parametros;
+
+                parametro = [];
+                for (var k = 0, l = tmp_bmi.length; k < l; k++) {
+                    idade = new Hash();
+                    idade.set('agemos', tmp_bmi[k].agemos);
+
+                    if ($chk(tmp_bmi[k])) {
+                        lms_bmi = new Hash();
+                        lms_bmi.set('l', tmp_bmi[k].l);
+                        lms_bmi.set('m', tmp_bmi[k].m);
+                        lms_bmi.set('s', tmp_bmi[k].s);
+                        idade.set('bmi', lms_bmi);
+                    }
+
+                    if ($chk(tmp_stat[k])) {
+                        lms_stat = new Hash();
+                        lms_stat.set('l', tmp_stat[k].l);
+                        lms_stat.set('s', tmp_stat[k].m);
+                        lms_stat.set('m', tmp_stat[k].s);
+                        idade.set('stat', lms_stat);
+                    }
+
+                    if ($chk(tmp_wt[k])) {
+                        lms_wt = new Hash();
+                        lms_wt.set('l', tmp_wt[k].l);
+                        lms_wt.set('m', tmp_wt[k].m);
+                        lms_wt.set('s', tmp_wt[k].s);
+                        idade.set('wt', lms_wt);
+                    }
+
+                    parametro.push(idade);
+                }
+                genero.set('parametros', parametro);
+
+                parametro_curva.push(genero);
+            }
+//            $('json_parametro').set('text', JSON.encode(parametro_curva));
+        </script>
     </body>
 </html>
