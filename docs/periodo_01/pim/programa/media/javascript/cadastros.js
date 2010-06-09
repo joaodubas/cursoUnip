@@ -1,5 +1,8 @@
 //CONTEM AS CARACTERISTICAS DE INTERESSE PARA AS PAGINAS DE CADASTRO
-var CADASTRO =
+var CADASTRO_TURMA = 0
+, CADASTRO_ALUNO = 1
+, CADASTRO_AVALIACAO = 2
+, CADASTRO =
 {
     cadastro_turma:
     {
@@ -10,7 +13,7 @@ var CADASTRO =
             , 'ipt_nome_turma'
             , 'sel_periodo_turma'
         ]
-        , tipo: 0
+        , tipo: CADASTRO_TURMA
     }
     , cadastro_aluno:
     {
@@ -24,7 +27,7 @@ var CADASTRO =
             , 'ipt_dt_nascimento'
             , 'sel_turma'
         ]
-        , tipo: 1
+        , tipo: CADASTRO_ALUNO
     }
     , cadastro_avaliacao:
     {
@@ -40,7 +43,7 @@ var CADASTRO =
             , 'ipt_cintura'
             , 'ipt_quadril'
         ]
-        , tipo: 2
+        , tipo: CADASTRO_AVALIACAO
     }
 };
 
@@ -128,16 +131,16 @@ var RegistroTable = new Class({
             , propriedade_container = ''
         ;
         switch (tipo) {
-            case 0:
+            case CADASTRO_TURMA:
                 id = this.options.registros.length;
                 propriedade_container = 'alunos';
                 break;
-            case 1:
+            case CADASTRO_ALUNO:
                 id = this.options.registros[$('sel_turma').value]
                     .alunos.length;
                 propriedade_container = 'avaliacoes';
                 break;
-            case 2:
+            case CADASTRO_AVALIACAO:
                 id = this.options.registros[$('sel_turma').value]
                     .alunos[$('sel_aluno').value]
                     .avaliacoes.length;
@@ -152,12 +155,15 @@ var RegistroTable = new Class({
             }
             form_field.value = '';
         });
-        if (tipo < 3) {
+        if (tipo < CADASTRO_AVALIACAO) {
             registro.set(propriedade_container, []);
         } else {
         }
         this.options.registros.push(registro);
         $.jStorage.set('classes', this.options.registros);
+        if (id == 0) {
+            this.tabela.empty();
+        }
         this.registro_atual = registro;
         this.inserirLinhaBrowser();
 
@@ -217,7 +223,7 @@ var RegistroTable = new Class({
         this.tabela.empty();
         if ($defined(registro[0])) {
             registro.each(function (turma) {
-                if (tipo == 0) {
+                if (tipo == CADASTRO_TURMA) {
                     self.registro_atual = turma;
                     self.inserirLinhaBrowser();
                 } else if ($defined(turma.alunos)) {
@@ -228,7 +234,7 @@ var RegistroTable = new Class({
                         }
                     }]);
                     turma.alunos.each(function (aluno) {
-                        if (tipo == 1) {
+                        if (tipo == CADASTRO_ALUNO) {
                             self.registro_atual = aluno;
                             self.inserirLinhaBrowser();
                         } else if ($defined(aluno.avaliacoes)) {
@@ -271,13 +277,13 @@ var RegistroTable = new Class({
         registro = this.registro_atual;
         tipo_cadastro = this.options.tipo.tipo;
         switch (tipo_cadastro) {
-            case 0:
+            case CADASTRO_TURMA:
                 this.inserirLinhaTurma(registro);
                 break;
-            case 1:
+            case CADASTRO_ALUNO:
                 this.inserirLinhaAluno(registro);
                 break;
-            case 2:
+            case CADASTRO_AVALIACAO:
                 this.inserirLinhaAvaliacao(registro);
                 break;
         }
