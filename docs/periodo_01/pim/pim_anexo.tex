@@ -1,0 +1,164 @@
+\appendix
+
+\chapter{Reuniões de grupo}
+
+\begin{description}
+
+    \item[02 de Março] Definição do grupo e composição do tema.
+
+    \item[09 de Março] Definição dos tópicos a serem discutidos, proposta
+    inicial de trabalho e montagem do cronograma.
+
+    \item[16 de Março] Adequação dos tópicos a serem discutidos, organização
+    do cronograma.
+
+    \item[23 de Março] Definição dos requisitos para programa a ser
+    apresentado.
+
+    \item[30 de Março] Inicio do trabalho de revisão de bibliografia.
+
+    \item[06 de Abril] Inicio da montagem para proposta do laboratório de
+    informática.
+
+    \item[13 de Abril] Levantamento de necessidades do colégio \emph{Faz de
+    contas}.
+
+    \item[20 de Abril] Inicio da organização das referências revisadas e
+    escrita do texto provisório.
+
+    \item[27 de Abril] Revisão dos conteúdos já montados e progresso do
+    trabalho.
+
+    \item[04 de Maio] Formatação do texto relativo ao capítulo 2.
+
+    \item[11 de Maio] Divisão do trabalho para o novo integrante do grupo e
+    revisão do progresso.
+
+    \item[18 de Maio] Revisão do programa a ser montado, definição de novos
+    requisitos e revisão do que já foi montado.
+
+\end{description}
+
+\chapter{Requisitos do software}
+
+    \section{Propósito}
+    O software deverá seguir as seguintes orientações:
+
+    \begin{enumerate}
+
+        \item Permitir cadastrar uma turma
+
+            \begin{itemize}
+
+                \item Nome da turma
+
+                \item Ciclo da turma
+
+                \item Período da turma \{1: `matutino', 2: `vespertino',
+                    3: `noturno', 4: `integral'\}
+
+            \end{itemize}
+
+        \item Permitir cadastrar uma avaliação de uma turma
+
+            \begin{itemize}
+
+                \item Quantidade de alunos na turma
+
+            \end{itemize}
+
+        \item Permitir cadastrar diversas avaliações de alunos
+
+            \begin{itemize}
+
+                \item Quantidade de avaliações do aluno
+
+            \end{itemize}
+
+        \item A respeito do aluno serão cadastradas
+
+            \begin{itemize}
+
+                \item Nome do aluno
+
+                \item Gênero do aluno \{1: `masculino', 2: `feminino'\}
+
+                \item Data de nascimento
+
+            \end{itemize}
+
+        \item A respeito da avaliação serão cadastradas
+
+            \begin{itemize}
+
+                \item Data da avaliação
+
+                \item Massa corporal (kg)
+
+                \item Estatura (cm)
+
+                \item Circunferência da cintura (cm)
+
+                \item Circunferência do quadril (cm)
+
+            \end{itemize}
+
+    \end{enumerate}
+
+    Ao professor será emitido um laudo com:
+
+    \begin{itemize}
+
+        \item Idade de cada aluno (em anos e em meses)
+
+        \item Índice de massa corporal (IMC) de cada aluno
+
+        \item Classificação em percentil do IMC pela idade
+
+        \item Relação cintura/quadril (RCQ) de cada aluno
+
+        \item Índice de conicidade (IC) de cada aluno
+
+        \item Classificação da RCQ e IC de cada aluno
+
+        \item Representação gráfica da massa corporal, estatura e IMC
+        pela idade (caso tenhamos um protótipo)
+
+    \end{itemize}
+
+    No trabalho é interessante mostrar a ligação entre os assuntos
+    envolvidos no desenvolvimento do aplicativo e as disciplinas que
+    gostaríamos de envolver no processo de ensino (matemática, educação
+    física e saúde).
+
+    \section{Cálculos}
+
+        \subsection{Índice de massa corporal (IMC)}
+        O IMC ($kg/m^2$) é calculado de acordo com a equação:
+
+        \begin{equation}
+        \label{eqn:imc}
+        IMC=\frac{MC}{H^2}
+        \end{equation}
+
+        Onde: $MC$ é a massa corporal em quilogramas e $H$ é a
+        estatura em metros.
+
+        \subsection{Relação cintura quadril (RCQ)}
+        A RCQ é calculada de acordo com a equação:
+
+        \begin{equation}
+        \label{eqn:rcq}
+        RCQ=\frac{CCT}{CQD}
+        \end{equation}
+
+        Onde: $CCT$ é a circunferência de cintura em centímetros e $CQD$
+        é a circunferência de quadril em centímetros.
+
+        \subsection{Índice de conicidade (IC)}
+        O IC é calculado de acordo com a equação:
+
+        \begin{equation}
+        \label{eqn:ic}
+        IC=\frac{CAB}{(0,109\times\sqrt{\frac{MC}{H}})}
+        \end{equation}

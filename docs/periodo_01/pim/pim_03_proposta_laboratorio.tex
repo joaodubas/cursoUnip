@@ -1,0 +1,233 @@
+\chapter[Laboratório]{Proposta do Laboratório de Informática}
+\label{ch:laboratorio}
+
+    \section{Introdução}
+    \label{sc:laboratorio_intro}
+    Neste capítulo iremos abordar o estudo de caso para emprego de um
+    laboratório de informática na escola de ensino médio
+    \begin{bfseries}Colégio de Faz de Contas\end{bfseries}.
+
+    Após introdução dos elementos característicos da escola e das
+    necessidades do projeto, sera apresentada e discutida a solução
+    proposta, custo envolvido e, como tal proposta será empregada no
+    \begin{bfseries}Colégio Faz de Contas\end{bfseries}.
+
+    \section{Estrutura \& Necessidades}
+    \label{sc:laboratorio_estrutura}
+    O Colégio Faz de Contas, situado à Rua do Sobe e Desce, sem
+    número, na Terra do Nunca; conta com uma instalação de
+    100m\begin{math}^{2}\end{math}, salas aclimatizadas e biblioteca.
+
+        \subsection{Quantidade de alunos}
+        Atualmente o Colégio Faz de Contas, atende a cerca de 500
+        alunos, em todas as séries do Ensino Fundamental (1\textordfeminine
+        à 8\textordfeminine séries), nos períodos matutino e vespertino.
+
+        \subsection{Estrutura de ensino}
+        Para permitir ao aluno um ensino integral\footnote{lembrar do
+        colégio onde ocorreu o treinamento de Python} o colégio
+        disponibiliza salas de estudo especiais e atividades extra
+        curriculares.
+
+        Além desta possibilidade, todos os professores prestam plantões
+        após o horário de aula e, constantemente, os diretores do colégio
+        promovem eventos para disseminação do conhecimento entre os
+        alunos.
+
+        \subsection{Bibliotecas}
+        O Colégio Faz de Contas conta com uma sala de estudo reservada
+        para uso pelos professores, em atividades de ensino, bem como com
+        uma biblioteca para atender alunos e professores em suas pesquisas.
+
+        \subsection{Salas de aula}
+        O Colégio Faz de Contas dispões de salas de aula que atendem entre
+        20 e 40 alunos (as turmas formadas são de no máximo 30 alunos).
+        Estas salas dispõem de tv, dvd e cd player.
+
+        Além das salas de aula, é disponível um espaço que tem por
+        objetivo servir de espaço para o laboratório de informática.
+
+        \subsection{Necessidades}
+        Apesar de disponiblizar recursos de áudio e vídeo para seus alunos e
+        professores, o que enriquece o aprendizando dos alunos e as
+        possibilidades educacionais para os professores, a diretorio e o
+        coordenador pedagógico do Colégio Faz de Contas, percebem atualmente
+        que seu pontencial pedagógico e de formação do cidadão ficam
+        prejudicados pela ausência de um laboratório de informática.
+
+        Para tentar sanar este problema, foram pensados em dois espaços que
+        deveriam prover ao corpo discente do colégio acesso à informática:
+
+        \begin{description}
+
+            \item[Laboratório] Deverá atender a 50 alunos, tendo como meta
+            permitir mais uma ferramenta educacional para o professor. Nesse
+            laboratório, professor e aluno terão acesso à internet, porém
+            restrições deverão ser aplicadas, tais como:
+
+            \begin{enumerate}
+
+                \item Acesso a sites de redes socias.
+
+                \item Acesso a sites de novelas e/ou \emph{fofocas}.
+
+            \end{enumerate}
+
+        \end{description}
+
+    \section{Propostas de ação}
+    \label{sc:laboratorio_proposta}
+    Compreendendo o colégio e quais suas necessidades, foram montadas
+    as propostas descritas abaixo:
+
+        \subsection{Proposta: \emph{Thin client}}
+        Considerando a vida útil dos aparelhos eletrônicos e sua
+        disponibilidade, uma forma interessante de tentar aproveitar de
+        forma melhor as máquinas disponíveis e aumentar a disponibilidade
+        do laboratório, envolve a combinação de servidores e \emph{thin
+        client}.
+
+        Além de tornarem os custos de manutenção inferiores àqueles
+        obtidos em instalações compostas por computadores pessoais, esta
+        solução, também proporciona redução nos custos de atualização do
+        do software (uma vez que os custos de licença e suporte são
+        menores com software livre) e atualização de hardware (já que as
+        atualizações são relacionadas à estrutura de rede ou servidor e não
+        há cada computador, ou seja, a administração dos computadores é
+        centralizada no servidor).
+
+        Este sistema (servidor - \emph{thin client})funciona da seguinte
+        forma\footnote{ver arquivo Ch8 Thin-Clients-1-4TBQ1.pdf}:
+
+        \begin{itemize}
+
+            \item A aplicação é executada completamente no servidor.
+
+            \item No lado do servidor, a imagem é capturada, comprimida,
+            criptografada e enviada para o \emph{thin client}, onde será
+            exibida.
+
+            \item No lado do \emph{thin client}, o teclado e os movimentos
+            do mouse são capturados e transmitidos para o servidor.
+
+            \item Todas as transações são realizadas através Protocolos
+            de Desktop Remoto (\emph{Remote Desktop Protocol}, RDP) ou
+            protocolo Arquitertura Computacional Independente
+            (\emph{Independet Computing Architecture}, ICA), ambos de baixa
+            largura de banda.
+
+        \end{itemize}
+
+        Para atender às necessidades do Colégio Faz de Contas, serão
+        necessários:
+
+        \begin{description}
+
+            \item[Servidor] Serão utilizados dois servidores, em cluster
+            com balanceamento de carga. Permitindo assim melhor divisão do
+            trabalho e maior velocidade no momento servir às requisições
+            feitas pelos \emph{thin client}.
+
+            Os servidores, serão \emph{HP ProLiant BL280c G6}, com as
+            seguintes especificações:
+
+            \begin{description}
+
+                \item[Processador] Dois Intel Xeon Quad-Core E5504.
+
+                \item[Memória] 8 pentes PC3-10600E de 2GB cada.
+
+                \item[Disco] 2 discos rigidos de 160GB cada, modelo
+                \emph{3G Non-Hot Plug SATA}, 7200rpm.
+
+                \item[Sistema Operacional] Debian 5.0 GNU/Linux, com sistema
+                de virtualização por meio do software Xen, onde serão
+                servidos o sistema Edubuntu 10.04, que apresenta soluções
+                integradas para educação.
+
+            \end{description}
+
+            O custo destes servidores será de US\$ 3169,00 cada.
+
+            \item[\emph{Storage}] Serão empregados dois sistemas de discos
+            para \emph{backup} e armazenamento de perfis e configurações
+            dos usuários.
+
+            Para tal serão adquiridos dois sistemas de backup HP RDX500
+            com disco interno removível de 500GB, modelo AJ934SB. Com custo
+            de US\$ 649,00 cada.
+
+            \item[\emph{Thin client}] Serão utilizados 100 terminais, sendo
+            disponibilizados para a biblioteca e 50 para o laboratório de
+            informática. Ester terminais serão \emph{stateless} e
+            \emph{fanless}, ou seja, sem partes móveis, o que garante maior
+            durabilidade e reduzida necessidade de suporte.
+
+            Serão utilizadas a unidade \emph{thin client} da HP Compaq,
+            modelo t5325.
+
+        \end{description}
+
+        \subsection{Laboratório Interativo}
+
+            \subsubsection{Objetivo}
+            Baixo investimento. Serão utilizados equipamentos com ótimo
+            custo-benefício. O maior investimento será na aquisição de um
+            servidor para armazenamento de arquivos, gerenciamento de
+            impressões, logon na rede da escola e controle de acesso à internet.
+
+            Tanto no servidor como nos terminais dos alunos serão utilizados
+            softwares livres. Teremos também um terminal exclusivo para uso do
+            instrutor, onde com auxílio de projetor, as aulas serão ministradas,
+            facilitando assim a aprendizagem.
+
+            \subsubsection{Funcionamento}
+            Todos os aplicativos serão executados no terminal do aluno,
+            possibilitando uma redução significativa dos recursos de hardware
+            do servidor.
+
+            Sistemas de backup manterão os terminais em estado padrão de
+            funcionamento, não  permitindo que os usuários modifiquem o sistema.
+
+            \subsubsection{Configurações}
+            Para os terminais a serem utilizados pelos alunos, os computadores
+            terão as seguintes configurações:
+
+            \begin{description}
+
+                \item[Processador] AMD SEMPRON 2.20Ghz
+
+                \item[Memória] 1 Gb
+
+                \item[Disco] 160 Gb
+
+                \item[Sistema Operacional] Edubuntu 10.04
+
+                \item[Monitor] LCD de 15.6'' Widescreen
+
+                \item[Custo unitário] R\$ 798,00
+
+            \end{description}
+
+            Serão utilizados 41 terminais para o laboratório, sendo 40 para uso
+            dos alunos e 1 para uso do instrutor (juntamente com um projetor
+            Sony VPL-ES7).
+
+            O computador quer será utilizado como servidor terão a configuração
+            abaixo:
+
+            \begin{description}
+
+                \item[Placa-Mãe] MB Dual Xeon, S5500BC Intel
+
+                \item[Processador] 2 processadores Xeon E5504 2.00 Ghz -- 8 Mb -- Intel
+
+                \item[Memória] 8 Gb DDR3-1333
+
+                \item[Disco] 500 Gb
+
+                \item[Sistema Operacional] FEDORA 13 GNU/LINUX
+
+                \item[Custo do Servidor] R\$ 5.000,00
+
+            \end{description}
