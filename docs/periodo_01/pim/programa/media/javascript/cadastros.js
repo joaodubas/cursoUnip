@@ -1,51 +1,53 @@
 //CONTEM AS CARACTERISTICAS DE INTERESSE PARA AS PAGINAS DE CADASTRO
 var CADASTRO_TURMA = 0
-, CADASTRO_ALUNO = 1
-, CADASTRO_AVALIACAO = 2
-, CADASTRO =
-{
-    cadastro_turma:
+    , CADASTRO_ALUNO = 1
+    , CADASTRO_AVALIACAO = 2
+    , CADASTRO =
     {
-        formulario: 'turma_cadastro'
-        , filtro: 'turma_filtro'
-        , tabela: 'turma_registro'
-        , mapa: ['hd_id_turma'
-            , 'ipt_nome_turma'
-            , 'sel_periodo_turma'
-        ]
-        , tipo: CADASTRO_TURMA
+        cadastro_turma:
+        {
+            formulario: 'turma_cadastro'
+            , filtro: 'turma_filtro'
+            , tabela: 'turma_registro'
+            , mapa: ['hd_id_turma'
+                , 'ipt_nome_turma'
+                , 'sel_periodo_turma'
+            ]
+            , tipo: CADASTRO_TURMA
+        }
+        , cadastro_aluno:
+        {
+            formulario: 'aluno_cadastro'
+            , filtro: 'aluno_filtro'
+            , tabela: 'aluno_registro'
+            , mapa: ['hd_id_aluno'
+                , 'ipt_nome_aluno'
+                , 'ipt_masculino'
+                , 'ipt_feminino'
+                , 'ipt_dt_nascimento'
+                , 'sel_turma'
+            ]
+            , tipo: CADASTRO_ALUNO
+        }
+        , cadastro_avaliacao:
+        {
+            formulario: 'avaliacao_cadastro'
+            , filtro: 'avaliacao_filtro'
+            , tabela: 'avaliacao_registro'
+            , mapa: ['hd_id_avaliacao'
+                , 'sel_turma'
+                , 'sel_aluno'
+                , 'ipt_data_avaliacao'
+                , 'ipt_massa'
+                , 'ipt_estatura'
+                , 'ipt_cintura'
+                , 'ipt_quadril'
+            ]
+            , tipo: CADASTRO_AVALIACAO
+        }
     }
-    , cadastro_aluno:
-    {
-        formulario: 'aluno_cadastro'
-        , filtro: 'aluno_filtro'
-        , tabela: 'aluno_registro'
-        , mapa: ['hd_id_aluno'
-            , 'ipt_nome_aluno'
-            , 'ipt_masculino'
-            , 'ipt_feminino'
-            , 'ipt_dt_nascimento'
-            , 'sel_turma'
-        ]
-        , tipo: CADASTRO_ALUNO
-    }
-    , cadastro_avaliacao:
-    {
-        formulario: 'avaliacao_cadastro'
-        , filtro: 'avaliacao_filtro'
-        , tabela: 'avaliacao_registro'
-        , mapa: ['hd_id_avaliacao'
-            , 'sel_turma'
-            , 'sel_aluno'
-            , 'ipt_data_avaliacao'
-            , 'ipt_massa'
-            , 'ipt_estatura'
-            , 'ipt_cintura'
-            , 'ipt_quadril'
-        ]
-        , tipo: CADASTRO_AVALIACAO
-    }
-};
+    , PERIODOS = ['Matutino', 'Vespertino', 'Noturno', 'Integral']
+;
 
 //CLASSE QUE IMPLEMENTA OS CONTROLES PARA CADASTROS
 var RegistroTable = new Class({
@@ -61,23 +63,45 @@ var RegistroTable = new Class({
     , modal: null
     , botao_adicionar: null
     , registro_atual: null
+    , turma_atual: null
+    , aluno_atual: null
+    , avaliacao_atual: null
+    //inicializacao
     , initialize: function (options) {
         this.setOptions(options);
-        this.tabela = new HtmlTable($$('.browser')[0]);
-        this.tabela_corpo = $(this.options.tipo['tabela']);
-        this.filtro = $(this.options.tipo['filtro']);
+        //obtendo formulario e escondendo
         this.formulario = $(this.options.tipo['formulario']);
         this.modal = this.formulario.getParent();
         this.modal.addClass('esconder');
+        //obtendo tabela de browser
+        this.tabela = new HtmlTable($$('.browser')[0]);
+        this.tabela_corpo = $(this.options.tipo['tabela']);
+        //obtendo formulario de filtro
+        this.filtro = $(this.options.tipo['filtro']);
+        //obtendo botao de adicionar registro
         this.botao_adicionar = $$('.btn_add_registro');
+        //populando tabela
         this.popularBrowser();
+        //adicionando controles da pagina
         this.adicionarControle();
     }
+    //adicionando controles das paginas
     , adicionarControle: function () {
         var self = this
             , modalSize = null
             , viewPort = null
             , topPos = 0
+            , apresentarModal = function () {
+                if (!self.modal.hasClass('exibir')) {
+                    self.modal.removeClass('esconder');
+                    self.modal.addClass('exibir');
+                    modalSize = self.modal.getSize();
+                    viewPort = window.getSize();
+                    topPos = (viewPort.y - modalSize.y) / 2;
+                    self.modal.setStyle('top', topPos);
+                }
+                return false;
+            }
             ;
         //adiciona os eventos submit e reset ao formulario principal
         this.formulario.addEvents({
@@ -103,6 +127,7 @@ var RegistroTable = new Class({
             var id = this.getProperty('id');
             if (this.hasClass('editar')) {
                 self.editarRegistro(this);
+                apresentarModal();
             } else if (this.hasClass('apagar')) {
                 self.removerRegistro(this);
             }
@@ -111,18 +136,12 @@ var RegistroTable = new Class({
         //faz com que o botao acione o formulario
         this.botao_adicionar.addEvent('click', function (event) {
             event.preventDefault();
-            if (!self.modal.hasClass('exibir')) {
-                self.modal.removeClass('esconder');
-                self.modal.addClass('exibir');
-                modalSize = self.modal.getSize();
-                viewPort = window.getSize();
-                topPos = (viewPort.y - modalSize.y) / 2;
-                self.modal.setStyle('top', topPos);
-            }
+            apresentarModal();
             return false;
         });
         return false;
     }
+    //adiciona um registro de acordo com tipo de cadastro
     , adicionarRegistro: function () {
         var id = 0
             , form_field = null
@@ -169,9 +188,11 @@ var RegistroTable = new Class({
 
         return false;
     }
+    //atualiza um registro
     , atualizarRegistro: function () {
         return false;
     }
+    //remove um registro
     , removerRegistro: function (target) {
         var id_lista = target.getProperty('id').split('|')
             , targetParent = target.getParent('tr').dispose()
@@ -209,9 +230,12 @@ var RegistroTable = new Class({
         this.popularBrowser();
         return false;
     }
+    //edita um registro
     , editarRegistro: function (target) {
+        //todo
         return false;
     }
+    //popula a a tabela de browser
     , popularBrowser: function () {
         var self = this
             , ha_sem_registro = false
@@ -219,6 +243,8 @@ var RegistroTable = new Class({
             , numero_celulas = $(this.tabela).tHead.rows[0].cells.length + 1
             , tipo = this.options.tipo.tipo
             , nome_turma = nome_aluno = ''
+            , periodo_turma = ''
+            , id_turma = id_aluno = id_avaliacao = 0
         ;
         this.tabela.empty();
         if ($defined(registro[0])) {
@@ -228,9 +254,12 @@ var RegistroTable = new Class({
                     self.inserirLinhaBrowser();
                 } else if ($defined(turma.alunos)) {
                     nome_turma = turma.nm_turma;
-                    self.tabela.push([{content: nome_turma
+                    id_turma = turma.nr_id_turma;
+                    periodo_turma = PERIODOS[turma.cd_periodo - 1];
+                    self.tabela.push([{content: nome_turma + ' (' + periodo_turma + ')'
                         , properties: {
                             colspan: numero_celulas
+                            , id: 'turma|' + String(id_turma)
                         }
                     }]);
                     turma.alunos.each(function (aluno) {
@@ -239,9 +268,11 @@ var RegistroTable = new Class({
                             self.inserirLinhaBrowser();
                         } else if ($defined(aluno.avaliacoes)) {
                             nome_aluno = aluno.nm_aluno;
+                            id_aluno = aluno.nr_id_aluno;
                             self.tabela.push([{content: nome_aluno
                                 , properties: {
                                     colspan: numero_celulas
+                                    , id: 'aluno|' + String(id_turma) + '|' + String(id_aluno)
                                 }
                             }]);
                             aluno.avaliacoes.each(function (avaliacao) {
@@ -263,6 +294,7 @@ var RegistroTable = new Class({
         }
         return false;
     }
+    //insere linha sem registro
     , inserirSemRegistro: function (numero_celulas, ha_sem_registro) {
         if (!ha_sem_registro) {
             new Element('th', {
@@ -289,27 +321,90 @@ var RegistroTable = new Class({
         }
         return false;
     }
+    , gerarIdCelula: function (id) {
+        return this.options.tipo.mapa.map(function (value) {
+            return value + '|' + id;
+        });
+    }
     , inserirLinhaTurma: function (registro) {
-        var periodos = ['Matutino', 'Vespertino', 'Noturno', 'Integral']
-            , id_turma = registro.nr_id_turma
+        var id_turma = registro.nr_id_turma
             , nome_turma = registro.nm_turma
-            , periodo_turma = periodos[registro.cd_periodo - 1]
+            , periodo_turma = PERIODOS[registro.cd_periodo - 1]
             , numero_alunos = $chk(registro.alunos) ? registro.alunos.length : 0
+            , ids_campos = this.gerarIdCelula(String(id_turma))
         ;
         this.tabela.push([
-            this.criarLinkControle(1, 'editar|' + id_turma, String(id_turma))
-            , nome_turma
-            , periodo_turma
+            {content: this.criarLinkControle(1, 'editar|' + id_turma, String(id_turma))
+                , properties: {id: ids_campos[0]}}
+            , {content: nome_turma
+                , properties: {id: ids_campos[1]}}
+            , {content: periodo_turma
+                , properties: {id: ids_campos[2]}}
             , String(numero_alunos)
             , this.criarLinkControle(1, 'editar|' + id_turma)
             , this.criarLinkControle(2, 'apagar|' + id_turma)
         ]);
         return false;
     }
-    , inserirLinhaAluno: function () {
+    , inserirLinhaAluno: function (registro) {
+        //TODO inserir idade do aluno
+        var id_turma = registro.nr_id_turma
+            , id_aluno = registro.nr_id_aluno
+            , id_string = [id_turma, id_aluno].join('|')
+            , nome_aluno = registro.nm_aluno
+            , data_nascimento = registro.dt_nascimento
+            , genero = registro.cd_genero
+            , numero_avaliacoes = $chk(registro.avaliacoes) ? registro.avaliacoes.length: 0
+            , ids_campos = this.gerarIdCelula(id_string)
+        ;
+        this.tabela.push([
+            {content: this.criarLinkControle(1, 'editar|' + id_string, String(id_turma))
+                , properties: {id: id_campos[0]}}
+            , {content: nome_aluno
+                , properties: {id: id_campos[1]}}
+            , {content: data_nascimento
+                , properties: {id: id_campos[2]}}
+            , {content: genero
+                , properties: {id: id_campos[3]}}
+            , String(numero_avaliacoes)
+            , this.criarLinkControle(1, 'editar|' + id_string)
+            , this.criarLinkControle(2, 'apagar|' + id_string)
+        ]);
         return false;
     }
-    , inserirLinhaAvaliacao: function () {
+    , inserirLinhaAvaliacao: function (registro) {
+        //TODO inserir calculo IMC/RCQ e classificacoes
+        var id_turma = registro.nr_id_turma
+            , id_aluno = registro.nr_id_aluno
+            , id_avaliacao = registro.nr_id_avaliacao
+            , id_string = [id_turma, id_aluno, id_avaliacao].join('|')
+            , data_avalicao = registro.dt_avaliacao
+            , massa_corporal = registro.nr_mc
+            , estatura = registro.nr_estatura
+            , cintura = registro.nr_cintura
+            , quadril = registro.nr_quadril
+            , id_campos = this.gerarIdCelula(id_string)
+        ;
+        this.tabela.push([
+            {content: this.criarLinkControle(1, 'editar|' + id_string, String(id_avaliacao))
+                , properties: {id: id_campos[0]}}
+            , {content: data_avaliacao
+                , properties: {id: id_campos[3]}}
+            , {content: massa_corporal
+                , properties: {id: id_campos[4]}}
+            , {content: estatura
+                , properties: {id: id_campos[5]}}
+            , '-'
+            , '-'
+            , {content: cintura
+                , properties: {id: id_campos[6]}}
+            , {content: quadril
+                , properties: {id: id_campos[7]}}
+            , '-'
+            , '-'
+            , this.criarLinkControle(1, 'editar|' + id_string)
+            , this.criarLinkControle(2, 'apagar|' + id_string)
+        ]);
         return false;
     }
     , criarLinkControle: function (tipo_link, id_link, texto_link) {
