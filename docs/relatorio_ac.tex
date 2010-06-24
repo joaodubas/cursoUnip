@@ -247,9 +247,49 @@
     \chapter[Django ORM]{Django ORM: SQL sem sujar as mãos}
 
         \section{Introdução}
+        Atualmente o desenvolvimento de websites e aplicativos web, têm tido um
+        grande impulso, devido ao surgimento de \emph{Frameworks}, tais como:
+
+        \begin{itemize}
+
+            \item Rails para a linguagem Ruby
+
+            \item Spring para a linguagem Java
+
+            \item Java Server Faces também para a linguagem Java
+
+            \item Symphony para a linguagem PHP
+
+            \item entre outros \ldots
+
+        \end{itemize}
+
+        Para a linguagem Python, o surgimento do framework Django representou
+        um grande avança no desenvolvimento de tais aplicativos. Como qualquer
+        \emph{framework} moderno, o Django conta com uma camada que abstrai o
+        acesso ao banco de dados, mapeando objetos criados em Python para
+        tabelas no banco de dados (tal mapeamento é conhecido como \emph{Object
+        Relational Mapping} (Mapeamento Objeto-Relacional, ORM), tal camada
+        facilita o cotidiano do desenvolvedor ao permitir que este trabalhe na
+        linguagem de programação, sem que se faça necessário digitar comandos
+        SQL.
+
+        Apesar das facilidades, é importante reconhecer as limitações e o
+        funcionamento do ORM, este foi o propósito deste curso.
 
         \section[Descrição atividade]{Descrição da atividade
         \\em ordem cronológica}
+        Inicialmente, fez-se a instalação do Django nas máquinas de todos
+        para que fosse possível executar os exemplos. Concluída a instalação,
+        fez-se uma breve apresentação do framework, como iniciar projetos e
+        aplicativos pela linha de comando.
+
+        Após esta rodada inicial de introdução, criamos nosso modelo que seria
+        transportado para o banco de dados, a partir desse momento, não
+        trabalhamos necessariamente no navegador web e sim, na linha de comando
+        utilizando o shell BPython para verificar o que a ORM do Django
+        realmente executa `por de baixo dos panos' ao executarmos um comando
+        Python para inserir, atualizar e obter um conjunto de dados.
 
         \section{Conclusão}
 \end{document}
