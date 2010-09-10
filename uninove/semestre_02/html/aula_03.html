@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='pt-br' lang='pt-br'>
+    <head>
+        <title>Aula 3</title>
+        <meta name='http-equiv' content='text/html, charset=utf=-8' />
+        <style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 6px 0 3px 0;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 1.75em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+a:link, a:visited, a:hover, a:active {
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+}
+a:link, a:visited {
+    background-color: #deefff;
+    color: #022446;
+}
+
+a:hover, a:active {
+    background-color: #9aabaa;
+    color: #011223;
+}
+/*
+ * LAYOUT
+ */
+.container {
+    border-color: #033669;
+    border-style: solid;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 1.25%;
+    width: 82.5%;
+}
+#header {
+    background-color: rgb(125, 125, 125);
+    background-color: rgba(125, 125, 125, 0.25);
+    border-width: 0 2px 1px 2px;
+}
+#main {
+    border-width: 0 2px;
+    padding-top: 0.5%;
+}
+#footer {
+    border-width: 1px 2px 0 2px;
+}
+    #content, #extras {
+        float: left;
+        overflow: hidden;
+    }
+    #content {
+        width: 77.5%
+    }
+        .row {
+            margin-bottom: 0.5%;
+            overflow: hidden;
+        }
+        .box {
+            float: left;
+            margin-right: 0.5%;
+            width: 49.75%;
+        }
+        .tamanho1de3 {
+            width: 33%
+        }
+        .last {
+            margin-right: 0;
+            clear: right;
+        }
+        .full {
+            margin: 0;
+            width: 100%;
+        }
+            .box h2, .info, .box p {
+                border-color: #25588b;
+                border-style: solid;
+            }
+            .box h2 {
+                background: #25588b;
+                color: #fff;
+                border-width: 1px 1px 0 1px;
+            }
+            .box p, .info dt, .info dd, .info li {
+                margin: 0;
+            }
+            .box p {
+                border-width: 0 1px;
+                padding: 0.2em 0;
+            }
+            .box p:last-child {
+                border-width: 0 1px 1px 1px;
+            }
+            .info {
+                border-width: 0 1px 1px 1px;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+                overflow: hidden;
+            }
+                .info dt, .info dd, .info li {
+                    float: left;
+                    margin: 0;
+                    padding: 0;
+                    list-style-type: none;
+                }
+                .info dt {
+                    font-weight: bold;
+                }
+                .info li {
+                    border-bottom: 1px solid #699ccf;
+                    width: 100%;
+                }
+                .info li:last-child {
+                    border: 0;
+                }
+                    .extra-info {
+                        overflow: hidden;
+                    }
+                    .extra-info dt, .extra-info dd{
+                        float: left;
+                    }
+                    .extra-info dt {
+                        margin-right: 2%;
+                        width: 8%;
+                    }
+                    .extra-info dd {
+                        width: 90%;
+                    }
+                    .extra-info :first-child {
+                        font-style: italic;
+                        margin: 0%;
+                        padding: 0 2%;
+                        width: 96%;
+                    }
+                .personal dt, .online dt {
+                    margin-right: 0.5%;
+                    width: 19.5%;
+                }
+                .personal dd {
+                    width: 80%;
+                }
+                .personal dd + dd {
+                    margin-left: 20%;
+                }
+                .online dd {
+                    font-size: .8em;
+                    line-height: 1.875;
+                    width: 30%
+                }
+    #extras {
+        margin: 0 0 0 0.5%;
+        width: 22%;
+    }
+        </style>
+    </head>
+    <body>
+        <div id='header' class='container'>
+            <h1>Curriculum Vitae</h1>
+        </div>
+        <div id='main' class='container'>
+            <div id='content'>
+                <div class='row'>
+                    <div class='box full'>
+                        <h2>Dados pessoais</h2>
+                        <dl class='info personal'>
+                            <dt>Nome:</dt>
+                            <dd>Jo&atilde;o Paulo Dubas</dd>
+                            <dt>Endere&ccedil;o:</dt>
+                            <dd>R. Aldalberto Melo Lucena, n&ordm; 77</dd>
+                            <dd>Bairro: Jd. Santo Elisa. S&atilde;o Paulo &mdash; SP.</dd>
+                            <dd>
+                                <abbr title='C&oacute;digo de Endere&ccedil;amento Postal'>CEP</abbr>:
+                                05135-400
+                            </dd>
+                            <dt>Celular</dt>
+                            <dd>(11) 7653-3796</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='box'>
+                        <h2>Presen&ccedil;a <span lang='en'>online</span></h2>
+                        <dl class='info online'>
+                            <dt>GitHub</dt>
+                            <dd>
+                                <a href='http://github.com/joaodubas/'>Projetos</a>
+                            </dd>
+                            <dt>Twitter</dt>
+                            <dd>
+                                <a href='http://www.twitter.com/joaodubas'>@joaodubas</a>
+                            </dd>
+                            <dt lang='en'>Website</dt>
+                            <dd>
+                                <a href='http://www.dbsdev.com.br/'>Di&aacute;rio de
+                                    bordo
+                                </a>
+                            </dd>
+                            <dt lang='en'>E-mail</dt>
+                            <dd>
+                                <a href='mailto:joao.dubas@dbsdev.com.br'>Entre em contato</a>
+                            </dd>
+                            <dt lang='en'>Facebook</dt>
+                            <dd>
+                                <a href='http://www.facebook.com/joao.dubas/'>Social</a>
+                            </dd>
+                            <dt lang='en'>Slideshare</dt>
+                            <dd>
+                                <a href='http://www.slideshare.net/joaodubas/'>Apresenta&ccedil;&atilde;oes</a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class='box last'>
+                        <h2>Forma&ccedil;&atilde;o acad&ecirc;mica e treinamento</h2>
+                        <ul class='info curso'>
+                            <li>Bacharelado e Licenciatura em Educa&ccedil;&atilde;o
+                                F&iacute;sica &mdash;
+                                <abbr title='Universidade Metropolitana de
+                                        Santos'>UNIMES</abbr> /
+                                <abbr title='Faculdade de Educa&ccedil;&atilde;o
+                                        F&iacute;sica de Santos'>FEFIS</abbr>
+                                &mdash; 2002
+                            </li>
+                            <li>P&oacute;s gradua&ccedil;&atilde;o
+                                (<em lang='lt'>Lato Sensu</em>) Fisiologia do
+                                Exerc&iacute;cio &mdash;
+                                <abbr title='Universidade Metropolitana de
+                                        Santos'>UNIMES</abbr> /
+                                <abbr title='Centro de Estudos de Fisiologia do
+                                        Exerc&iacute;cio'>CEFE</abbr>
+                                &mdash; 2004
+                            </li>
+                            <li>Curso &#8220;Forma&ccedil;&atilde;o de Administrador em
+                                Redes Linux&#8221;  &mdash; 4Linux &mdash; 2008
+                            </li>
+                            <li>Cursos &#8220;Java Programmer M&oacute;dulos I / II e
+                                J2EE &mdash; JSP + Servlets&#8221; &mdash; Impacta
+                                &mdash; 2008
+                            </li>
+                            <li>Treinamento de Certifica&ccedil;&atilde;o e Assinatura
+                                Digital &mdash; BRY &mdash; 2010
+                            </li>
+                            <li>Tecn&oacute;logo em Sistemas para Internet &mdash;
+                                <abbr title='Univesidade Nove de Julho'>UNINOVE</abbr>
+                                &mdash; 2012 (cursando)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='box'>
+                        <h2>Perfil profissional</h2>
+                        <ul class='info'>
+                            <li>10 anos de atua&ccedil;&atilde;o em ci&ecirc;ncias da
+                                sa&uacute;de e esporte, com &ecirc;nfase nas &aacute;reas
+                                de avalia&ccedil;&atilde;o f&iacute;sica e desenvolvimento
+                                de programas de treinamento individualizados.
+                            </li>
+                            <li>Desenvolvimento de pesquisas cient&iacute;ficas na
+                                &aacute;rea de fisiologia do exerc&iacute;cio, com
+                                publica&ccedil;&otilde;es de artigos e
+                                apresenta&ccedil;&otilde;es em congressos nacionais e
+                                internacionais.
+                            </li>
+                            <li>Conhecimentos avan&ccedil;ados em Estat&iacute;stica e
+                                Bioestat&iacute;stica.
+                            </li>
+                            <li>Colabora&ccedil;&atilde;o no desenvolvimento de
+                                disserta&ccedil;&otilde;es e teses, com aux&iacute;lio em
+                                especial nas &aacute;reas de metodologia da pesquisa e
+                                an&aacute;lise de dados.
+                            </li>
+                            <li>Emprego de webstandards no desenvolvimento de aplicativos
+                                web.
+                            </li>
+                            <li>Desenvolvimento em linguagem Java e Python.</li>
+                            <li>Conhecimentos avan&ccedil;ados de javascript e
+                                intermedi&aacute;rio do framework mootools e jQuery.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='box last'>
+                        <h2>Realiza&ccedil;&otilde;es comunit&aacute;rias</h2>
+                        <ul class='info'>
+                            <li>Colaborador do programa &#8220;Muscula&ccedil;&atilde;o
+                                para a Melhor Idade&#8221; &mdash;
+                                <abbr title='Universidade Metropolitana de
+                                        Santos'>UNIMES</abbr> /
+                                <abbr title='Centro de Estudos de Fisiologia do
+                                        Exerc&iacute;cio'>CEFE</abbr>
+                                &mdash; 2002
+                            </li>
+                            <li>Colaborador do programa &#8220;Detec&ccedil;&atilde;o de
+                                Talentos Esportivos&#8221; &mdash; Minist&eacute;rio dos
+                                Esportes &mdash; 2000
+                            </li>
+                        </ul>
+                        <h2>Idiomas</h2>
+                        <ul class='info'>
+                            <li>Ingl&ecirc;s &mdash; T&eacute;cnico</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='box full'>
+                        <h2>Hist&oacute;rico profissional</h2>
+                        <ol class='info'>
+                            <li>Laborat&oacute;rio de Desempenho Esportivo (LADESP)
+                                &mdash; EEFEUSP &mdash; Fevereiro de 1999 &agrave;
+                                Fevereiro de 2001
+                                <dl class='extra-info'>
+                                    <dd>Laborat&oacute;rio do Curso de
+                                        Educa&ccedil;&atilde;o F&iacute;sica e Esportes da
+                                        Universidade de S&atilde;o Paulo, reconhecido pelas
+                                        contribui&ccedil;&otilde;es no estudo do rendimento
+                                        esportivo em suas diversas facetas.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Avaliador F&iacute;sico</dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>aux&iacute;lio nas avalia&ccedil;&otilde;es de
+                                        atletas e rotinas laboratoriais.
+                                        Participa&ccedil;&atilde;o na coleta de dados para
+                                        mestrandos e doutorandos do laborat&oacute;rio
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>Universidade Santa Cec&iacute;lia dos Bandeirantes &mdash;
+                                Dezembro 2000 &agrave; Agosto 2001
+                                <dl class='extra-info'>
+                                    <dd>Universidade localizada na cidade de Santos. Focada
+                                        no ensino de qualidade e avan&ccedil;o do
+                                        conhecimento.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Professor Assistente</dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>auxiliar nas disciplinas de Anatomia, Biometria e
+                                        Introdu&ccedil;&atilde;o &agrave; Fisiologia
+                                        Humana, Laborat&oacute;rio de Fisiologia do
+                                        Exerc&iacute;cio.
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>Corpo 10 Academia &mdash; Janeiro de 2000 &agrave;
+                                Fevereiro de 2005
+                                <dl class='extra-info'>
+                                    <dd>Academia localizada em Santos, com atividades
+                                        voltadas para a Terceira Idade e Jovens.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Avaliador F&iacute;sico</dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>desenvolvimento do programa de
+                                        avalia&ccedil;&atilde;o e acompanhamento do
+                                        condicionamento f&iacute;sico, com &ecirc;nfase em
+                                        protocolos de avalia&ccedil;&atilde;o para idosos
+                                        e jovens.
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>Centro de Treinamento Personalizado New Life &mdash;
+                                Outubro de 2003 &agrave; Fevereiro de 2005
+                                <dl class='extra-info'>
+                                    <dd>Sala de treinamento personalizado localizada em
+                                        Santos, reconhecida por seus servi&ccedil;os
+                                        diferenciados e proposta inovadora na Baixada
+                                        Santista.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Respons&aacute;vel pelo Setor de
+                                        Avalia&ccedil;&atilde;o F&iacute;sica
+                                    </dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>desenvolvimento e treinamento do programa de
+                                        avalia&ccedil;&atilde;o f&iacute;sica.
+                                        Cria&ccedil;&atilde;o de software para
+                                        gera&ccedil;&atilde;o de laudos e acompanhamento
+                                        dos alunos.
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>Centro de Estudos de Fisiologia do Exerc&iacute;cio (CEFE)
+                                &mdash; Universidade Federal de S&atilde;o Paulo &mdash;
+                                Maio de 2005 &agrave; Dezembro de 2008
+                                <dl class='extra-info'>
+                                    <dd>&Oacute;rg&atilde;o suplementar da Escola Paulista
+                                        de Medicina/Universidade Federal de S&atilde;o
+                                        Paulo. Reconhecido pela sua
+                                        contribui&ccedil;&atilde;o acad&ecirc;mica e
+                                        aplicada &agrave; fisiologia do exerc&iacute;cio.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Coordenador de Laborat&oacute;rio</dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>aux&iacute;lio na coleta de dados de mestrandos e
+                                        doutorandos. Aux&iacute;lio nos programas de
+                                        avalia&ccedil;&atilde;o f&iacute;sica do
+                                        CENESP/UNIFESP para as sele&ccedil;&otilde;es
+                                        brasileiras de Handebol, Basquete, Jud&ocirc;,
+                                        Pentatlo Moderno, T&ecirc;nis, Beisebol, Softbol
+                                        entre outras. Participa&ccedil;&atilde;o do
+                                        programa de acompanhamento dos para-atletas para
+                                        os jogos Pan-Americanos do Rio de Janeiro (2007).
+                                        Aux&iacute;lio na elabora&ccedil;&atilde;o e
+                                        desenvolvimento do programa de acompanhamento dos
+                                        atletas brasileiros para as condi&ccedil;&otilde;es
+                                        ambientais e clim&aacute;ticas nos Jogos
+                                        Ol&iacute;mpicos de Beijing (2008) realizado em
+                                        conjunto com o COB e Minist&eacute;rio dos Esportes.
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>AGE &amp; MAKE &mdash; Janeiro de 2009 &agrave; Julho de 2010
+                                <dl class='extra-info'>
+                                    <dd>Empresa de desenvolvimento de
+                                        solu&ccedil;&otilde;es de software como
+                                        servi&ccedil;o baseados na Internet.
+                                    </dd>
+                                    <dt>Cargo</dt>
+                                    <dd>Analista Desenvolvedor S&ecirc;nior II</dd>
+                                    <dt>Atua&ccedil;&atilde;o</dt>
+                                    <dd>desenvolvimento de solu&ccedil;&atilde;o para
+                                        acompanhamento da equipe de desenvolvedores na
+                                        execu&ccedil;&atilde;o de suas atividades
+                                        semanais, atendendo aos preceitos do Agile e das
+                                        pr&aacute;ticas propostas pela MPS-BR, tal
+                                        ferramenta foi empregada para
+                                        obten&ccedil;&atilde;o do N&iacute;vel G da
+                                        certifica&ccedil;&atilde;o MPS-BR. Aux&iacute;lio
+                                        na cria&ccedil;&atilde;o dos m&oacute;dulos de
+                                        qualidade de vida e ergonomia, para o software de
+                                        seguran&ccedil;a e medicina do trabalho
+                                        desenvolvido. Emprego de padr&otilde;es de design
+                                        para atualiza&ccedil;&atilde;o da interface de
+                                        formul&aacute;rios e de solu&ccedil;&otilde;es
+                                        para aprimorar performance do aplicativo web em
+                                        rela&ccedil;&atilde;o ao front-end.
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div id='extras' class='box'>
+                <h2>Bio</h2>
+                <p>Sou um autodidata por natureza, apaixonado por tecnologia e
+                    inform&aacute;tica. Um santista nato (adoro praia) e um bom
+                    irm&atilde;o (pelo menos quando estou por perto).</p>
+                <p>Atualmente meus interesses s&atilde;o: banco de dados NoSQL, HTML5 (e
+                    tecnologias relacionadas), desenvolvimento web com Python e Django e
+                    javascript server-side com node.js.</p>
+                <p>Al&eacute;m da &aacute;rea de web, realizo servi&ccedil;os de
+                    estat&iacute;stica para graduandos, mestrandos e doutorandos da
+                    &aacute;rea de sa&uacute;de, tendo acompanhado dezenas de
+                    disserta&ccedil;&otilde;es e teses.</p>
+            </div>
+        </div>
+        <div id='footer' class='container'>
+            <p>Precisa de um ninja,
+                    <a href='mailto:joao.dubas@gmail.com'>entre em contato</a>!!!.</p>
+        </div>
+    </body>
+</html>

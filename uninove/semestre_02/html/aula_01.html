@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Strict//EN'>
+
+<html>
+  <head>
+    <title>Aula 1</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <style type='text/css'>
+html
+    , body
+{
+  background-color: #f9f9f9;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 8px;
+}
+h1
+    , h2
+    , h3
+    , h4
+    , h5
+    , h6
+{
+  border-top: 1px dotted #000;
+  margin: 6px 0 0 0;
+  padding: 6px 0;
+}
+h1
+    , h3
+    , h5
+{
+  background-color: #dfdfdf;
+  color: #366369;
+}
+h2
+    , h4
+    , h6
+{
+  background-color: #acacac;
+  color: #033036;
+}
+h1
+{
+  font-size: 1.75em;
+}
+h2
+{
+  font-size: 1.625em;
+  margin-left: 4px; 
+}
+h3
+{
+  font-size: 1.5em;
+  margin-left: 8px; 
+}
+h4
+{
+  font-size: 1.375em;
+  margin-left: 16px; 
+}
+h5
+{
+  font-size: 1.25em;
+  margin-left: 32px; 
+}
+h6
+{
+  font-size: 1.125em;
+  margin-left: 64px; 
+}
+p
+{
+  text-indent: 16px;
+  margin: 6px 0;
+  padding: 0;
+}
+#paper div
+{
+  position: absolute;
+  left: -999999px;
+}
+#paper .show
+{
+  position: relative;
+  left: 0;
+}
+    </style>
+  </head>
+  <body>
+    <div id='paper'>
+      <h1>T&iacute;tulo do artigo</h1>
+      <div id='abstract'>
+        <h2>Resumo</h2>
+        <p>Escrever uma breve descri&ccedil;&atilde;o do trabalho.</p>
+      </div>
+      <div id='introduction'>
+        <h2>Introdu&ccedil;&atilde;o</h2>
+        <p>Apresente teoria acerca do trabalho sendo desenvolvido.</p>
+        <div id='jusfication'>
+          <h3>Justificativa</h3>
+        </div>
+        <div id='objective'>
+          <h3>Objetivo</h3>
+          <div id='objective_general'>
+            <h4>Geral</h4>
+          </div>
+          <div id='objective_specific'>
+            <h4>Espec&iacute;fico</h4>
+          </div>
+        </div>
+      </div>
+      <div id='methods'>
+        <h2>Metodologia</h2>
+        <div id='sample'>
+          <h3>Amostra</h3>
+        </div>
+        <div id='protocols'>
+          <h3>T&eacute;cnicas</h3>
+        </div>
+        <div id='stats'>
+          <h3>Estat&iacute;stica</h3>
+        </div>
+      </div>
+      <div id='results'>
+        <h2>Resultados</h2>
+      </div>
+      <div id='discussion'>
+        <h2>Discuss&atilde;o</h2>
+      </div>
+      <div id='conclusion'>
+        <h2>Conclus&atilde;o</h2>
+      </div>
+    </div>
+    <script type='text/javascript'>
+/*
+alert('estou aqui');
+var nome = prompt('qual e tua? ', ' ');
+alert(nome);
+document.write(nome);
+*/
+var paper = document.getElementById('paper');
+paper.getElementsByTagName('h1')[0].onclick = function () {
+    var paper_class = this.className
+        , paper_section = this.parentNode.getElementsByTagName('div')
+        , section = null
+        , section_class = ''
+        ;
+        for (var i = 0; section = paper_section[i]; i++) {
+            if (paper_class != '') {
+                section_class = '';
+            } else {
+                section_class = 'show';
+            }
+            section.className = section_class;
+        }
+        if (paper_class != '') {
+            paper_class = '';
+        } else {
+            paper_class = 'show';
+        }
+        this.className = paper_class;
+};
+    </script>
+  </body>
+</html>

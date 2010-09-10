@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Aula 2: HTML m&iacute;nimo</title>
+        <style type="text/css">
+html, body {
+    background: #ababab;
+    font: normal normal normal 14px/2 Verdana, Arial, sans-serif;
+    margin: 0;
+    padding: 0 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 8px 0 6px 0;
+}
+
+h2, h4, h6 {
+    font-style: italic;
+}
+
+h1 {
+    background-color: #cdcdcd;
+    color: #36699c;
+    border-bottom: 2px solid #033669;
+    text-align: center;
+    font-size: 2em;
+}
+
+h2 {
+    background-color: #dfdfdf;
+    color: #699ccf;
+    border-bottom: 2px solid #033669;
+    font-size: 1.9em;
+}
+
+h3 {
+    font-size: 1.8em;
+}
+
+h4 {
+    font-size: 1.7em;
+}
+
+h5 {
+    font-size: 1.6em;
+}
+h6 {
+    font-size: 1.5em;
+}
+
+p {
+    text-indent: 1.5em;
+    margin: 0 0 4px 0;
+}
+
+p + p {
+    text-indent: 0;
+    margin-bottom: 2px;
+}
+
+dl, dt, dd {
+    margin: 0;
+    padding: 0;
+}
+
+dt {
+    font-weight: bold;
+    padding-bottom: 1px; 
+}
+
+dd {
+    text-indent: 1.75em;
+    margin-bottom: 2px;
+    border-bottom: 1px solid #030369;
+}
+
+pre {
+    margin: 2px 8px;
+    line-height: 1.5;
+}
+
+.destaque {
+    background-color: #dfdfdf;
+    color: #033669;
+}
+.welcome_msg {
+    color: green;
+}
+
+#corpo {
+    background: #fff;
+    border-color: #030336;
+    border-style: solid;
+    border-width: 0 2px 2px 2px;
+    margin: 0 5em;
+    position:relative;
+    width: auto;
+    overflow: hidden;
+}
+#conteudo, #extra {
+    float: left;
+}
+#conteudo {
+    width: 75%;
+}
+#extra {
+    font-size: 0.8em;
+    width: 25%;
+}
+.coluna {
+    border-color: #030369;
+    border-style: solid;
+    padding: 2px;
+}
+#conteudo .coluna {
+    border-width: 0 2px 0 0;
+}
+#extra .coluna {
+    border-width: 0;
+}
+#extra h3 {
+    background-color: #dedede;
+    border-bottom: 1px solid #030336;
+}    
+.paragrafo_destaque {
+    color: #969600;
+}
+        </style>
+    </head>
+
+    <body>
+        <div id="corpo">
+            <div id="conteudo">
+                <div class="coluna">
+                    <h1>Programa&ccedil;&atilde;o para Internet</h1>
+                    <h2>Aula 2: aplicando estilos inline e em classe</h2>
+                    <p>Exemplo de estilo inline:</p>
+                    <pre>
+    ...
+    &lt;p style="color: red"&gt;Par&aacute;grafo&lt;p&gt;
+    ...
+                    </pre>
+                    <p>Exemplo de classe:</p>
+                    <pre>
+    ...
+    &lt;stytle type="text/css"&gt;
+    .destque {
+    color: red;
+    }
+    &lt;/style&gt;
+    ...
+    &lt;p class="destaque"&gt;Par&aacute;grafo&lt;/p&gt;
+    ...
+                    </pre>
+                </div>
+            </div>
+            <div id="extra">
+                <div class="coluna">
+                    <h3>Contato:</h3>
+                    <dl>
+                        <dt id="pessoal_nome">Nome:</dt>
+                        <dd>Jo&atilde;o Paulo Dubas</dd>
+                        <dt id="pessoal_dob">Data de nascimento:<dt>
+                        <dd>15/12/1978</dd>
+                        <dt id="pessoal_endereco">Endere&ccedil;o:</dt>
+                        <dd>R. Adalberto Melo Lucena, 77</dd>
+                        <dt id="pessoal_email">E-mail:</dt>
+                        <dd>
+                            <a href="mailto:joao.dubas@uninove.edu.br">joao.dubas@uninove.edu.br</a>
+                        </dd>
+                        <dt id="pessoal_twitter">Twitter:</dt>
+                        <dd>
+                            <a href="http://www.twitter.com/joaodubas">@joaodubas</a>
+                        </dd>
+                        <dt id="pessoal_git">Git:</dt>
+                        <dd>
+                            <a href="http://github.com/joaodubas/">git@github.com:joaodubas</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+function mouseControl(e, targetElm) {
+    if (e.type == "mouseover") {
+        targetElm.className="destaque";
+    } else {
+        targetElm.className="";
+    }
+}
+var cabecalho_h1 = document.getElementsByTagName("h1")[0];
+cabecalho_h1.onmouseover = cabecalho_h1.onmouseout = function (e) {
+    e = e || window.event;
+    mouseControl(e, this);
+};
+        </script>
+    </body>
+
+</html>
+
